@@ -1,0 +1,3 @@
+User-agent: *
+Disallow: /l/
+Sitemap: https://ownbill.in/sitemap.xml
