@@ -1,202 +1,606 @@
 <!doctype html>
-<html lang="en">
+<html lang="en-IN">
 <head>
 <meta charset="utf-8">
 <meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover">
-<title>OwnBill: GST billing, khata and stock for your shop</title>
-<meta name="description" content="Make GST bills on your phone, send them on WhatsApp and get paid by UPI. Khata, stock, staff and reports for Indian shops and traders, in 12 languages. First 6 months of Max are free.">
-<meta name="theme-color" content="#0E1014">
-<meta name="color-scheme" content="light dark">
+<title>OwnBill: GST billing, khata and stock app for Indian shops</title>
+<meta name="description" content="Make GST bills on your phone, send them on WhatsApp with a UPI pay link, and keep khata, stock, godowns and staff in step. Works offline, in 12 languages, with servers in India. 6 months of Max free.">
+<meta name="theme-color" content="#0B0D10">
 <link rel="canonical" href="https://ownbill.in/">
+<link rel="icon" href="/img/mark.svg" type="image/svg+xml">
 <meta property="og:type" content="website">
-<meta property="og:title" content="OwnBill: GST bills, khata and stock on your phone">
-<meta property="og:description" content="Bills, GST, khata and stock for Indian shops and traders. Sign in with WhatsApp. 6 months of Max free.">
+<meta property="og:site_name" content="OwnBill">
+<meta property="og:title" content="OwnBill: GST bills on your phone. Paid on WhatsApp.">
+<meta property="og:description" content="GST billing, khata, stock and staff for Indian shops and traders. Works offline. 6 months of Max free.">
 <meta property="og:url" content="https://ownbill.in/">
 <meta property="og:image" content="https://ownbill.in/img/og.png">
-<link rel="icon" href="/img/mark.svg" type="image/svg+xml">
-<link rel="preload" href="/assets/fonts/Geist-600.woff2" as="font" type="font/woff2" crossorigin>
-<link rel="stylesheet" href="/assets/site.css">
-<script type="application/ld+json">{"@context":"https://schema.org","@type":"SoftwareApplication","name":"OwnBill","operatingSystem":"Android, Windows","applicationCategory":"BusinessApplication","publisher":{"@type":"Organization","name":"Provantic Technologies Private Limited"},"offers":[{"@type":"Offer","name":"Starter","price":"1499","priceCurrency":"INR"},{"@type":"Offer","name":"Business","price":"2999","priceCurrency":"INR"},{"@type":"Offer","name":"Max","price":"4999","priceCurrency":"INR"}]}</script>
+<meta name="twitter:card" content="summary_large_image">
+<link rel="preload" href="/assets/fonts/Geist-700.woff2" as="font" type="font/woff2" crossorigin>
+<link rel="preload" href="/assets/fonts/GeistMono-400.woff2" as="font" type="font/woff2" crossorigin>
+<link rel="stylesheet" href="/assets/home.css?v=2">
+<script src="/assets/vendor/gsap.min.js" defer></script>
+<script src="/assets/vendor/ScrollTrigger.min.js" defer></script>
+<script src="/assets/vendor/lenis.min.js" defer></script>
+<script src="/assets/home.js?v=2" defer></script>
+<script type="application/ld+json">
+{"@context":"https://schema.org","@graph":[
+{"@type":"SoftwareApplication","name":"OwnBill","operatingSystem":"Android, Windows","applicationCategory":"BusinessApplication","description":"GST billing, khata, stock and staff app for Indian shops and traders.","offers":[{"@type":"Offer","name":"Starter","price":"1499","priceCurrency":"INR"},{"@type":"Offer","name":"Business","price":"2999","priceCurrency":"INR"},{"@type":"Offer","name":"Max","price":"4999","priceCurrency":"INR"}],"publisher":{"@type":"Organization","name":"Provantic Technologies Private Limited","url":"https://ownbill.in/"}},
+{"@type":"FAQPage","mainEntity":[
+{"@type":"Question","name":"Does OwnBill work without internet?","acceptedAnswer":{"@type":"Answer","text":"Yes. Billing, khata and stock work fully offline on the phone. When the network is back, every phone in your shop syncs on its own."}},
+{"@type":"Question","name":"Is OwnBill GST compliant?","acceptedAnswer":{"@type":"Answer","text":"OwnBill picks CGST and SGST, IGST or UTGST from the GSTINs and prints what a tax invoice must carry. It makes the GSTR-1 file, e-invoice JSON and e-way bill file. Check rates and HSN codes with your CA."}},
+{"@type":"Question","name":"How much does OwnBill cost?","acceptedAnswer":{"@type":"Answer","text":"New accounts get the Max plan free for 6 months. After that, Starter is Rs 1,499 a year, Business Rs 2,999 and Max Rs 4,999, GST included."}}
+]}]}
+</script>
 </head>
 <body>
+<svg class="sprite" aria-hidden="true" focusable="false">
+  <symbol id="i-mic" viewBox="0 0 24 24"><rect x="9" y="2" width="6" height="12" rx="3"/><path d="M5 11a7 7 0 0 0 14 0M12 18v4"/></symbol>
+  <symbol id="i-check" viewBox="0 0 24 24"><path d="M5 12.5l4.5 4.5L19 7.5"/></symbol>
+  <symbol id="i-wifi-off" viewBox="0 0 24 24"><path d="M2 8.8a15 15 0 0 1 4.2-2.6M10.7 5.1A15 15 0 0 1 22 8.8M5 12.6a10 10 0 0 1 5.2-2.6M16.8 11.1A10 10 0 0 1 19 12.6M8.5 16.2a5 5 0 0 1 7 0M12 20h.01M3 3l18 18"/></symbol>
+  <symbol id="i-shield" viewBox="0 0 24 24"><path d="M12 3l8 3v6c0 4.5-3.4 8.3-8 9-4.6-.7-8-4.5-8-9V6z"/><path d="M8.5 12l2.5 2.5 4.5-5"/></symbol>
+  <symbol id="i-pin" viewBox="0 0 24 24"><path d="M12 21s7-6.2 7-12a7 7 0 0 0-14 0c0 5.8 7 12 7 12z"/><circle cx="12" cy="9" r="2.5"/></symbol>
+  <symbol id="i-lock" viewBox="0 0 24 24"><rect x="4" y="10" width="16" height="11" rx="2.5"/><path d="M8 10V7a4 4 0 0 1 8 0v3"/></symbol>
+  <symbol id="i-cloud" viewBox="0 0 24 24"><path d="M7 18h10a4 4 0 0 0 .6-8A6 6 0 0 0 6.2 9 4.5 4.5 0 0 0 7 18z"/><path d="M12 11v5M9.5 13.5L12 11l2.5 2.5"/></symbol>
+  <symbol id="i-users" viewBox="0 0 24 24"><circle cx="9" cy="8" r="3.5"/><path d="M2.5 20a6.5 6.5 0 0 1 13 0M16 4.6a3.5 3.5 0 0 1 0 6.8M18 14.3a6.5 6.5 0 0 1 3.5 5.7"/></symbol>
+  <symbol id="i-key" viewBox="0 0 24 24"><circle cx="8" cy="15" r="4"/><path d="M11 12l9-9M17 6l3 3M15 8l2 2"/></symbol>
+  <symbol id="i-arrow" viewBox="0 0 24 24"><path d="M5 12h14M13 6l6 6-6 6"/></symbol>
+  <symbol id="i-menu" viewBox="0 0 24 24"><path d="M4 7h16M4 12h16M4 17h16"/></symbol>
+  <symbol id="i-wa" viewBox="0 0 24 24"><path d="M4 20l1.3-4.2A8 8 0 1 1 8.4 19z"/><path d="M9 9.5c.3 1.9 2.6 4.3 5.5 5l1-1.4-1.8-.9-.8.8c-1-.4-2-1.4-2.4-2.4l.8-.8-.9-1.8z"/></symbol>
+  <symbol id="i-bill" viewBox="0 0 24 24"><path d="M6 3h12v18l-2-1.4-2 1.4-2-1.4-2 1.4-2-1.4L6 21z"/><path d="M9 8h6M9 12h6M9 16h3"/></symbol>
+  <symbol id="i-box" viewBox="0 0 24 24"><path d="M3.5 7.5L12 3l8.5 4.5v9L12 21l-8.5-4.5z"/><path d="M3.5 7.5L12 12l8.5-4.5M12 12v9"/></symbol>
+  <symbol id="i-chart" viewBox="0 0 24 24"><path d="M4 20V10M10 20V4M16 20v-7M22 20H2"/></symbol>
+  <symbol id="i-book" viewBox="0 0 24 24"><path d="M4 4.5A1.5 1.5 0 0 1 5.5 3H20v15H5.5A1.5 1.5 0 0 0 4 19.5z"/><path d="M4 19.5A1.5 1.5 0 0 0 5.5 21H20v-3"/></symbol>
+</svg>
+
 <a class="skip" href="#main">Skip to content</a>
 
-<header class="wrap top">
-  <a class="brand" href="/" aria-label="OwnBill home">
-    <svg viewBox="0 0 64 64" aria-hidden="true"><rect width="64" height="64" rx="16" fill="#0E1014"/><path d="M18 14H46V48L41.33 45L36.67 48L32 45L27.33 48L22.67 45L18 48Z" fill="#3DDC97" stroke="#3DDC97" stroke-width="2" stroke-linejoin="round"/><circle cx="32" cy="28" r="7" fill="#0E1014"/></svg>
-    OwnBill
-  </a>
-  <nav aria-label="Main">
-    <a href="#gst">GST</a>
-    <a href="#paid">Get paid</a>
-    <a href="#stock">Stock</a>
-    <a href="#pricing">Pricing</a>
-  </nav>
+<div class="loader" aria-hidden="true">
+  <div class="loader-slot"></div>
+  <div class="loader-paper"><img src="/img/mark.svg" width="56" height="56" alt=""><span>OwnBill</span></div>
+</div>
+
+<header class="nav">
+  <div class="nav-in">
+    <a class="brand" href="/" aria-label="OwnBill home"><img src="/img/mark.svg" width="34" height="34" alt="">OwnBill</a>
+    <nav class="nav-links" id="navlinks" aria-label="Main">
+      <a href="#story">How it works</a>
+      <a href="#features">Features</a>
+      <a href="#gst-calc">GST</a>
+      <a href="#pricing">Pricing</a>
+      <a href="#mandiway">MandiWay</a>
+      <a href="#faq">FAQ</a>
+      <a class="btn btn-mint btn-sm menu-cta" href="mailto:provantict@gmail.com?subject=OwnBill%20early%20access">Get early access</a>
+    </nav>
+    <a class="btn btn-mint btn-sm nav-cta" href="mailto:provantict@gmail.com?subject=OwnBill%20early%20access">Get early access</a>
+    <button class="nav-toggle" type="button" aria-expanded="false" aria-controls="navlinks" aria-label="Open menu"><svg class="ic"><use href="#i-menu"/></svg></button>
+  </div>
 </header>
 
 <main id="main">
-  <section class="wrap hero" aria-labelledby="hero-title">
-    <div>
-      <h1 id="hero-title">GST bills on your phone. Paid on WhatsApp.</h1>
-      <p class="lede">OwnBill is billing, khata and stock for Indian shops and traders. Sign in with your WhatsApp number, and every phone in your shop stays in step, even when the internet drops.</p>
-      <div class="ctas">
-        <a class="btn btn-ink" href="mailto:provantict@gmail.com?subject=OwnBill%20early%20access">Get early access</a>
-        <a class="btn btn-line" href="#pricing">See plans</a>
+
+<section class="hero" aria-labelledby="hero-h">
+  <div class="hero-glow" aria-hidden="true"></div>
+  <div class="hero-grid" aria-hidden="true"></div>
+  <div class="wrap hero-in">
+    <div class="hero-copy">
+      <p class="pill"><span class="dot"></span>Early access · Android and Windows</p>
+      <h1 id="hero-h" class="display">
+        <span class="line"><span>GST bills</span></span>
+        <span class="line"><span>on your phone.</span></span>
+        <span class="line"><span class="mint">Paid on WhatsApp.</span></span>
+      </h1>
+      <p class="lede">OwnBill is billing, khata and stock for Indian shops and traders. Make a GST bill in seconds, send it on WhatsApp with a UPI pay link, and watch your khata and stock update themselves. Even when the internet drops.</p>
+      <div class="cta-row">
+        <a class="btn btn-mint" href="mailto:provantict@gmail.com?subject=OwnBill%20early%20access">Get your free 6 months<svg class="ic"><use href="#i-arrow"/></svg></a>
+        <a class="btn btn-ghost" href="#story">Watch a bill get paid</a>
       </div>
-      <p class="note">Coming soon on Google Play. Your first 6 months of the Max plan are free, no card needed.</p>
+
     </div>
 
-    <div class="receipt-stage">
-      <figure class="receipt" aria-label="Example GST bill made in OwnBill: three items, CGST and SGST at 2.5%, total ₹435, paid by UPI">
-        <div class="p"><p class="shop">Sharma Traders</p><p class="gst">GSTIN 29ABCDE1234F1Z5, Bengaluru</p></div>
-        <div class="p kind"><span>TAX INVOICE</span><span>INV-0438</span></div>
-        <div class="p row"><span>Basmati Rice 1 kg × 2</span><span>180.00</span></div>
-        <div class="p row"><span>Sunflower Oil 1 L × 1</span><span>165.00</span></div>
-        <div class="p row"><span>Sugar 1 kg × 2</span><span>90.00</span></div>
-        <div class="p tax"><div class="row"><span>Taxable value</span><span>414.29</span></div><div class="row"><span>CGST 2.5%</span><span>10.36</span></div><div class="row"><span>SGST 2.5%</span><span>10.35</span></div></div>
-        <div class="p total"><span>Total</span><b>₹435.00</b></div>
-        <div class="p words">Rupees Four Hundred Thirty Five Only</div>
-        <div class="p paid"><i aria-hidden="true"></i>Paid by UPI. Sent to Anita on WhatsApp.</div>
-      </figure>
+    <div class="hero-stage">
+      <div class="phone hero-phone">
+        <div class="phone-screen"><img src="/img/s/home.webp" width="390" height="844" alt="OwnBill home: today's sales ₹12,266 from 11 bills, ₹8,286 received, ₹16,817 to collect" fetchpriority="high"></div>
+      </div>
+      <div class="printer" aria-hidden="true"><div class="printer-slot"></div></div>
+      <div class="receipt hero-receipt" role="img" aria-label="Tax invoice INV-0438 from Sharma Traders for ₹435, paid by UPI">
+        <div class="r-head"><b>Sharma Traders</b><small>GSTIN 29ABCDE1234F1Z5 · Bengaluru</small></div>
+        <div class="r-sub"><span>TAX INVOICE</span><span>INV-0438</span></div>
+        <div class="r-line"><span>Basmati Rice 1 kg × 2</span><span>180.00</span></div>
+        <div class="r-line"><span>Sunflower Oil 1 L × 1</span><span>165.00</span></div>
+        <div class="r-line"><span>Sugar 1 kg × 2</span><span>90.00</span></div>
+        <div class="r-tax"><span>Taxable value</span><span>414.29</span></div>
+        <div class="r-tax"><span>CGST 2.5%</span><span>10.36</span></div>
+        <div class="r-tax"><span>SGST 2.5%</span><span>10.35</span></div>
+        <div class="r-total"><span>Total</span><span>₹<b class="r-amt">435.00</b></span></div>
+        <div class="r-words">Rupees Four Hundred Thirty Five Only</div>
+        <div class="r-qr"><span class="qr" aria-hidden="true"></span><small>Scan to pay with any UPI app</small></div>
+        <div class="stamp" aria-hidden="true">PAID<small>UPI · 10:42</small></div>
+      </div>
+      <div class="bubble wa-bubble" aria-hidden="true">
+        <span class="bubble-ic"><svg class="ic"><use href="#i-wa"/></svg></span>
+        <span class="bubble-t"><b>Bill INV-0438 · ₹435</b><small>Sharma Traders · Tap to pay by UPI</small></span>
+        <span class="ticks">✓✓</span>
+      </div>
+      <div class="bubble paid-bubble" aria-hidden="true">
+        <span class="bubble-ic ok"><svg class="ic"><use href="#i-check"/></svg></span>
+        <span class="bubble-t"><b>₹435 received</b><small>Anita paid by UPI · khata settled</small></span>
+      </div>
     </div>
-  </section>
-
-  <section class="langs" aria-labelledby="langs-title">
-    <div class="wrap">
-      <p id="langs-title">Every screen, button and bill heading in the language your counter speaks.</p>
-      <ul>
-        <li lang="en">Bill<span>English</span></li>
-        <li lang="hi">बिल<span>Hindi</span></li>
-        <li lang="kn">ಬಿಲ್<span>Kannada</span></li>
-        <li lang="ta">பில்<span>Tamil</span></li>
-        <li lang="te">బిల్<span>Telugu</span></li>
-        <li lang="ml">ബിൽ<span>Malayalam</span></li>
-        <li lang="mr">बिल<span>Marathi</span></li>
-        <li lang="gu">બિલ<span>Gujarati</span></li>
-        <li lang="bn">বিল<span>Bengali</span></li>
-        <li lang="es">Factura<span>Spanish</span></li>
-        <li lang="id">Nota<span>Indonesian</span></li>
-        <li lang="pt">Conta<span>Portuguese</span></li>
+    <ul class="stats" aria-label="OwnBill at a glance">
+        <li><b>12</b><span>languages</span></li>
+        <li><b>0</b><span>internet needed to bill</span></li>
+        <li><b>6</b><span>months of Max free</span></li>
+        <li><b>IN</b><span>servers in Mumbai</span></li>
       </ul>
-    </div>
-  </section>
-
-  <div class="wrap">
-    <section class="chapter" id="gst" aria-labelledby="gst-title">
-      <div>
-        <h2 id="gst-title">The right GST on every bill, without looking it up.</h2>
-        <p>Add your GSTIN once. OwnBill reads your customer's GSTIN and picks CGST and SGST, IGST or UTGST for you, and prints everything a tax invoice must carry.</p>
-        <dl>
-          <div><dt>Every kind of bill</dt><dd>Tax invoice, bill of supply, estimate, sale order, proforma, delivery challan, credit note.</dd></div>
-          <div><dt>Exports</dt><dd>Foreign currency, LUT or IGST paid, shipping bill details you can add after saving.</dd></div>
-          <div><dt>E-way bill and e-invoice</dt><dd>OwnBill makes the official upload file for each bill, and prints the IRN and QR once you have them.</dd></div>
-          <div><dt>Ready for your CA</dt><dd>GSTR-1 file, Tally export, an Excel with every bill, and TDS and TCS kept straight.</dd></div>
-        </dl>
-      </div>
-      <figure class="phone"><img src="/img/bill.webp" width="390" height="844" alt="OwnBill bill preview: a tax invoice for Anita General Store with a UPI QR code to pay ₹7,060" loading="lazy"></figure>
-    </section>
-
-    <section class="chapter" id="paid" aria-labelledby="paid-title">
-      <div>
-        <h2 id="paid-title">Know who owes you, and get it back sooner.</h2>
-        <p>Every customer has a khata with a running balance. OwnBill tells you who is late and by how many days, and makes the nudge one tap.</p>
-        <dl>
-          <div><dt>UPI on every bill</dt><dd>A pay link and QR code with the amount already filled in, on the bill, the receipt and the statement.</dd></div>
-          <div><dt>Reminders on WhatsApp</dt><dd>A short list each morning of who to remind, with the message and pay link ready to send.</dd></div>
-          <div><dt>Promises remembered</dt><dd>Note when a customer says they will pay. Reminders wait until that day.</dd></div>
-          <div><dt>A statement they can open</dt><dd>Share a link that shows the customer their own bills and balance, and switch it off any time.</dd></div>
-        </dl>
-      </div>
-      <figure class="phone"><img src="/img/parties.webp" width="390" height="844" alt="OwnBill Parties screen: customers owe ₹16,817, Priya Jewellers ₹6,174 overdue 14 days, with a WhatsApp reminder button on each row" loading="lazy"></figure>
-    </section>
-
-    <section class="chapter" id="stock" aria-labelledby="stock-title">
-      <div>
-        <h2 id="stock-title">Stock that adds up, in every godown.</h2>
-        <p>Every bill and purchase moves stock for you. See what is running low before a customer asks for it.</p>
-        <dl>
-          <div><dt>Godowns and transfers</dt><dd>Stock per shop or godown, and a numbered transfer when goods move between them.</dd></div>
-          <div><dt>Batches and expiry</dt><dd>Sells the batch that expires first, never an expired one, and lists what expires in 30, 60 or 90 days.</dd></div>
-          <div><dt>Serial and IMEI numbers</dt><dd>Scan them in on purchase and out on sale. Look one up to see when it was bought and sold.</dd></div>
-          <div><dt>Low stock, before it runs out</dt><dd>Items running low show on Home, and the reorder list goes to your supplier on WhatsApp.</dd></div>
-        </dl>
-      </div>
-      <figure class="phone"><img src="/img/stock.webp" width="390" height="844" alt="OwnBill Expiring batches screen: Paracetamol 500 mg batch PCM2611 expires in 20 days" loading="lazy"></figure>
-    </section>
-
-    <section class="chapter" id="team" aria-labelledby="team-title">
-      <div>
-        <h2 id="team-title">One shop, many phones, nothing lost.</h2>
-        <p>Your cashier bills at the counter, your manager checks stock in the godown, and you see today's sales from home. Each person sees only what you allow.</p>
-        <dl>
-          <div><dt>Works without internet</dt><dd>Keep billing when the network drops. Everything syncs when it is back.</dd></div>
-          <div><dt>Staff with their own login</dt><dd>Cashier, manager or read-only access for your CA. Attendance and salary on the Business plan.</dd></div>
-          <div><dt>Deleted by mistake?</dt><dd>Deleted bills stay in the trash for 30 days, with their payments and stock, ready to bring back.</dd></div>
-          <div><dt>On your computer too</dt><dd>A Windows app for the counter, with keyboard shortcuts for a new bill and quick search.</dd></div>
-        </dl>
-      </div>
-      <figure class="phone"><img src="/img/home.webp" width="390" height="844" alt="OwnBill home screen: today's sales ₹12,266 from 11 bills, ₹8,286 received and ₹16,817 to collect" loading="lazy"></figure>
-    </section>
-
-    <section class="mandiway" aria-labelledby="mw-title">
-      <div class="mw-mark"><img src="/img/mandiway.svg" alt="MandiWay" width="92" height="64"></div>
-      <div>
-        <h2 id="mw-title">Sell to buyers beyond your street, with MandiWay.</h2>
-        <p>Link OwnBill to MandiWay, our B2B marketplace, and choose which items buyers can see. Their enquiries arrive in OwnBill, you quote from your items, and an accepted order becomes a bill on both sides.</p>
-      </div>
-    </section>
-
-    <section class="pricing" id="pricing" aria-labelledby="pricing-title">
-      <h2 id="pricing-title">Plans</h2>
-      <p class="intro">Start with 6 months of Max, free. After that, choose the plan that fits your shop. Prices include GST.</p>
-      <div class="table-wrap">
-        <table class="plans">
-          <caption class="sr">OwnBill plans compared</caption>
-          <thead>
-            <tr>
-              <td></td>
-              <th scope="col">Starter<small>For one counter</small></th>
-              <th scope="col">Business<small>For a shop with staff</small></th>
-              <th scope="col" class="hl">Max<small>For a growing trader</small></th>
-            </tr>
-          </thead>
-          <tbody>
-            <tr><th scope="row">Price a year</th><td class="price">₹1,499</td><td class="price">₹2,999</td><td class="price hl">₹4,999</td></tr>
-            <tr><th scope="row">Or monthly</th><td>₹179</td><td>₹349</td><td class="hl">₹549</td></tr>
-            <tr><th scope="row">Phones</th><td>2</td><td>5</td><td class="hl">15</td></tr>
-            <tr><th scope="row">Businesses</th><td>1</td><td>3</td><td class="hl">No limit</td></tr>
-            <tr><th scope="row">GST bills, khata, stock, reports</th><td class="yes">Included</td><td class="yes">Included</td><td class="yes hl">Included</td></tr>
-            <tr><th scope="row">Cloud backup, live sync, CA login, customer statement link, repeat bills</th><td class="yes">Included</td><td class="yes">Included</td><td class="yes hl">Included</td></tr>
-            <tr><th scope="row">Staff logins, attendance and salary, cash and bank book</th><td class="no">Not included</td><td class="yes">Included</td><td class="yes hl">Included</td></tr>
-            <tr><th scope="row">Godowns, batches and expiry, serial numbers</th><td class="no">Not included</td><td class="yes">Included</td><td class="yes hl">Included</td></tr>
-            <tr><th scope="row">Tally export, GSTR-1 file, daily reminder list</th><td class="no">Not included</td><td class="yes">Included</td><td class="yes hl">Included</td></tr>
-            <tr><th scope="row">E-invoice and e-way bill in one tap</th><td class="no">Not included</td><td class="no">Not included</td><td class="yes hl">Coming soon</td></tr>
-          </tbody>
-        </table>
-      </div>
-      <p class="fine">Need more? An extra phone is ₹299 a year and an extra business ₹499 a year. Plans renew until you cancel. Your bills stay on your phone and can be exported even after a plan ends.</p>
-    </section>
-
-    <section class="close" aria-labelledby="close-title">
-      <div>
-        <h2 id="close-title">Make your first bill in under a minute.</h2>
-        <p>OwnBill is in early access. Write to us and we will send you the app.</p>
-      </div>
-      <a class="btn btn-mint" href="mailto:provantict@gmail.com?subject=OwnBill%20early%20access">Get early access</a>
-    </section>
   </div>
+  <div class="scroll-cue" aria-hidden="true"><span></span></div>
+</section>
+
+<div class="ticker">
+  <div class="ticker-track">
+    <ul aria-label="What OwnBill does">
+      <li>GST tax invoices</li><li>WhatsApp bills</li><li>UPI QR on every bill</li><li>Khata with reminders</li><li>Works offline</li><li>Godowns and transfers</li><li>Batches and expiry</li><li>Serial and IMEI</li><li>E-invoice JSON and IRN</li><li>E-way bill file</li><li>GSTR-1 file</li><li>Tally export</li><li>Staff logins</li><li>Attendance and salary</li><li>12 languages</li><li>Windows app</li>
+    </ul>
+    <ul aria-hidden="true">
+      <li>GST tax invoices</li><li>WhatsApp bills</li><li>UPI QR on every bill</li><li>Khata with reminders</li><li>Works offline</li><li>Godowns and transfers</li><li>Batches and expiry</li><li>Serial and IMEI</li><li>E-invoice JSON and IRN</li><li>E-way bill file</li><li>GSTR-1 file</li><li>Tally export</li><li>Staff logins</li><li>Attendance and salary</li><li>12 languages</li><li>Windows app</li>
+    </ul>
+  </div>
+</div>
+
+<section class="sec pain" aria-labelledby="pain-h">
+  <div class="wrap">
+    <h2 id="pain-h" class="h2 reveal">Built from the things that go wrong <span class="soft">at a shop counter every day.</span></h2>
+    <div class="pain-grid">
+      <article class="pain-card reveal">
+        <p class="q">“The khata notebook got wet. I lost who owes me what.”</p>
+        <p class="a"><svg class="ic"><use href="#i-check"/></svg><span>Every customer's khata lives in OwnBill and in the cloud, with a running balance and every bill and payment behind it.</span></p>
+      </article>
+      <article class="pain-card reveal">
+        <p class="q">“Customers say they'll pay next week. Then they don't.”</p>
+        <p class="a"><svg class="ic"><use href="#i-check"/></svg><span>A list each morning of who to remind, how late they are, and a WhatsApp message with a UPI pay link ready to send.</span></p>
+      </article>
+      <article class="pain-card reveal">
+        <p class="q">“At return time, my CA asks for bills I can't find.”</p>
+        <p class="a"><svg class="ic"><use href="#i-check"/></svg><span>GSTR-1 file, HSN summary, Tally export and an Excel of every bill, ready on the first of the month.</span></p>
+      </article>
+      <article class="pain-card reveal">
+        <p class="q">“A customer asks for an item and only then I find it's finished.”</p>
+        <p class="a"><svg class="ic"><use href="#i-check"/></svg><span>Every bill and purchase moves stock. Items running low show on Home, with a reorder list for your supplier.</span></p>
+      </article>
+      <article class="pain-card reveal">
+        <p class="q">“Discounts and deleted bills I never approved.”</p>
+        <p class="a"><svg class="ic"><use href="#i-check"/></svg><span>Staff get their own login and limits. Big discounts and deletes need your PIN, and every action is logged.</span></p>
+      </article>
+      <article class="pain-card reveal">
+        <p class="q">“The network goes, and the queue at the counter grows.”</p>
+        <p class="a"><svg class="ic"><use href="#i-check"/></svg><span>OwnBill bills fully offline. Every phone catches up on its own when the network is back.</span></p>
+      </article>
+    </div>
+  </div>
+</section>
+
+<section class="story" id="story" aria-labelledby="story-h">
+  <div class="wrap story-in">
+    <div class="story-copy">
+      <h2 id="story-h" class="h2">One bill. <span class="soft">From the counter to paid.</span></h2>
+      <ol class="steps">
+        <li class="step is-on">
+          <span class="step-t">10:41:02</span>
+          <h3>Tap items, or just say them.</h3>
+          <p>Favourites sit on top. Search by name, HSN or barcode, or tap the mic and say “two basmati rice”. Prices, units and GST fill in.</p>
+          <figure class="step-shot"><div class="phone"><div class="phone-screen"><img src="/img/s/additem.webp" width="390" height="844" alt="Adding Basmati Rice to a bill with a number pad" loading="lazy"></div></div></figure>
+        </li>
+        <li class="step">
+          <span class="step-t">10:41:09</span>
+          <h3>GST picks itself.</h3>
+          <p>OwnBill compares your GSTIN with your customer's and applies CGST and SGST, or IGST, with HSN codes and the amount in words. A UPI QR with the exact amount prints on the bill.</p>
+          <figure class="step-shot"><div class="phone"><div class="phone-screen"><img src="/img/s/preview-upi.webp" width="390" height="844" alt="Tax invoice preview with a UPI QR code" loading="lazy"></div></div></figure>
+        </li>
+        <li class="step">
+          <span class="step-t">10:41:14</span>
+          <h3>Sent on WhatsApp. Pay link inside.</h3>
+          <p>One tap sends the PDF bill to your customer's WhatsApp with the amount due and a pay link. Or print it on your Bluetooth printer.</p>
+          <figure class="step-shot"><div class="phone"><div class="phone-screen"><img src="/img/s/share.webp" width="390" height="844" alt="Share bill screen with Send on WhatsApp" loading="lazy"></div></div></figure>
+        </li>
+        <li class="step">
+          <span class="step-t">10:42:30</span>
+          <h3>They pay with any UPI app.</h3>
+          <p>At the counter, show the QR on your screen. Far away, they tap the link. Mark it received in one tap, cash or UPI.</p>
+          <figure class="step-shot"><div class="phone"><div class="phone-screen"><img src="/img/s/collect.webp" width="390" height="844" alt="Collect payment screen with a ₹3,980 UPI QR" loading="lazy"></div></div></figure>
+        </li>
+        <li class="step">
+          <span class="step-t">10:42:31</span>
+          <h3>Khata, stock and reports update themselves.</h3>
+          <p>The customer's balance drops, stock moves out of the right godown, and today's sales go up on every phone in your shop.</p>
+          <figure class="step-shot"><div class="phone"><div class="phone-screen"><img src="/img/s/parties.webp" width="390" height="844" alt="Parties: customers owe ₹16,817 with Remind buttons" loading="lazy"></div></div></figure>
+        </li>
+      </ol>
+    </div>
+    <div class="story-stage" aria-hidden="true">
+      <div class="story-progress"><span></span></div>
+      <div class="phone story-phone">
+        <div class="phone-screen">
+          <img class="sc is-on" src="/img/s/additem.webp" width="390" height="844" alt="">
+          <img class="sc" src="/img/s/preview-upi.webp" width="390" height="844" alt="">
+          <img class="sc" src="/img/s/share.webp" width="390" height="844" alt="">
+          <img class="sc" src="/img/s/collect.webp" width="390" height="844" alt="">
+          <img class="sc" src="/img/s/parties.webp" width="390" height="844" alt="">
+        </div>
+      </div>
+      <div class="chip is-on"><svg class="ic"><use href="#i-mic"/></svg>“Two basmati rice”</div>
+      <div class="chip"><span class="tag">5%</span>CGST 2.5% + SGST 2.5%</div>
+      <div class="chip"><svg class="ic"><use href="#i-wa"/></svg>Sent to Anita General Store</div>
+      <div class="chip"><svg class="ic"><use href="#i-check"/></svg>₹3,980 received · UPI</div>
+      <div class="chip"><svg class="ic"><use href="#i-box"/></svg>Stock out of Main godown</div>
+    </div>
+  </div>
+</section>
+
+<section class="sec calc" id="gst-calc" aria-labelledby="calc-h">
+  <div class="wrap calc-in">
+    <div class="calc-copy">
+      <h2 id="calc-h" class="h2 reveal">The GST maths, <span class="soft">done right on every bill.</span></h2>
+      <p class="sub reveal">Try it. This is the same split OwnBill works out for each line, from the state in your GSTIN and your customer's.</p>
+      <form class="calc-form reveal" id="calcForm" novalidate>
+        <label class="fld">
+          <span class="fld-l">Amount</span>
+          <span class="money"><b aria-hidden="true">₹</b><input id="cAmt" type="text" inputmode="decimal" value="10000" autocomplete="off" aria-describedby="cAmtHelp"></span>
+          <small id="cAmtHelp">Numbers only, up to two decimals.</small>
+        </label>
+        <fieldset class="seg">
+          <legend>GST rate</legend>
+          <label><input type="radio" name="rate" value="0"><span>0%</span></label>
+          <label><input type="radio" name="rate" value="5"><span>5%</span></label>
+          <label><input type="radio" name="rate" value="12"><span>12%</span></label>
+          <label><input type="radio" name="rate" value="18" checked><span>18%</span></label>
+          <label><input type="radio" name="rate" value="28"><span>28%</span></label>
+        </fieldset>
+        <fieldset class="seg">
+          <legend>Customer is</legend>
+          <label><input type="radio" name="place" value="intra" checked><span>In my state</span></label>
+          <label><input type="radio" name="place" value="inter"><span>In another state</span></label>
+        </fieldset>
+        <fieldset class="seg">
+          <legend>The amount</legend>
+          <label><input type="radio" name="mode" value="excl" checked><span>Is before GST</span></label>
+          <label><input type="radio" name="mode" value="incl"><span>Includes GST</span></label>
+        </fieldset>
+      </form>
+    </div>
+    <div class="calc-out reveal">
+      <div class="receipt calc-receipt" aria-live="polite">
+        <div class="r-sub"><span>TAX INVOICE</span><span>Preview</span></div>
+        <div class="r-line"><span>Taxable value</span><span id="oTax">10,000.00</span></div>
+        <div class="r-line" id="rowC"><span id="lC">CGST 9%</span><span id="oC">900.00</span></div>
+        <div class="r-line" id="rowS"><span id="lS">SGST 9%</span><span id="oS">900.00</span></div>
+        <div class="r-line" id="rowI" hidden><span id="lI">IGST 18%</span><span id="oI">0.00</span></div>
+        <div class="r-total"><span>Total</span><span>₹<b id="oTot">11,800.00</b></span></div>
+        <div class="r-words" id="oWords">Rupees Eleven Thousand Eight Hundred Only</div>
+      </div>
+      <p class="fine">For illustration. Your CA confirms the right rate and HSN for each item.</p>
+    </div>
+  </div>
+</section>
+
+<section class="sec langs" aria-labelledby="lang-h">
+  <div class="wrap langs-in">
+    <div>
+      <h2 id="lang-h" class="h2 reveal">Your counter's language. <span class="soft">On every screen and every bill.</span></h2>
+      <p class="sub reveal">Twelve languages, switchable any time. Bill headings and totals print in the language you choose. Tap one.</p>
+      <div class="lang-pick reveal" role="radiogroup" aria-label="Choose a language to preview">
+        <button type="button" role="radio" aria-checked="true" data-l="0">English</button>
+        <button type="button" role="radio" aria-checked="false" data-l="1" lang="hi">हिन्दी</button>
+        <button type="button" role="radio" aria-checked="false" data-l="2" lang="kn">ಕನ್ನಡ</button>
+        <button type="button" role="radio" aria-checked="false" data-l="3" lang="ta">தமிழ்</button>
+        <button type="button" role="radio" aria-checked="false" data-l="4" lang="te">తెలుగు</button>
+        <button type="button" role="radio" aria-checked="false" data-l="5" lang="ml">മലയാളം</button>
+        <button type="button" role="radio" aria-checked="false" data-l="6" lang="mr">मराठी</button>
+        <button type="button" role="radio" aria-checked="false" data-l="7" lang="gu">ગુજરાતી</button>
+        <button type="button" role="radio" aria-checked="false" data-l="8" lang="bn">বাংলা</button>
+        <button type="button" role="radio" aria-checked="false" data-l="9" lang="es">Español</button>
+        <button type="button" role="radio" aria-checked="false" data-l="10" lang="id">Bahasa Indonesia</button>
+        <button type="button" role="radio" aria-checked="false" data-l="11" lang="pt">Português</button>
+      </div>
+    </div>
+    <div class="lang-stage reveal">
+      <div class="lang-word" aria-hidden="true"><span id="lWord">Bill</span></div>
+      <div class="receipt lang-receipt" aria-live="polite">
+        <div class="r-sub"><span id="lHead">BILL</span><span>INV-0438</span></div>
+        <div class="r-line"><span>Basmati Rice 1 kg × 2</span><span>180.00</span></div>
+        <div class="r-line"><span>Sunflower Oil 1 L × 1</span><span>165.00</span></div>
+        <div class="r-line"><span>Sugar 1 kg × 2</span><span>90.00</span></div>
+        <div class="r-total"><span id="lTotal">Total</span><span>₹435.00</span></div>
+        <div class="r-paid"><svg class="ic"><use href="#i-check"/></svg><span id="lPaid">Paid</span></div>
+      </div>
+      <div class="phone lang-phone"><div class="phone-screen"><img src="/img/s/home-hindi.webp" width="390" height="844" alt="OwnBill home screen in Hindi" loading="lazy"></div></div>
+    </div>
+  </div>
+</section>
+
+<section class="sec features" id="features" aria-labelledby="feat-h">
+  <div class="wrap">
+    <h2 id="feat-h" class="h2 reveal">Everything your shop runs on. <span class="soft">In one app.</span></h2>
+    <div class="tabs reveal" role="tablist" aria-label="Feature areas">
+      <button type="button" role="tab" id="t-gst" aria-controls="p-gst" aria-selected="true"><svg class="ic"><use href="#i-bill"/></svg>GST and compliance</button>
+      <button type="button" role="tab" id="t-khata" aria-controls="p-khata" aria-selected="false" tabindex="-1"><svg class="ic"><use href="#i-book"/></svg>Khata and collections</button>
+      <button type="button" role="tab" id="t-stock" aria-controls="p-stock" aria-selected="false" tabindex="-1"><svg class="ic"><use href="#i-box"/></svg>Stock and godowns</button>
+      <button type="button" role="tab" id="t-team" aria-controls="p-team" aria-selected="false" tabindex="-1"><svg class="ic"><use href="#i-users"/></svg>Staff and control</button>
+      <button type="button" role="tab" id="t-rep" aria-controls="p-rep" aria-selected="false" tabindex="-1"><svg class="ic"><use href="#i-chart"/></svg>Reports and backup</button>
+    </div>
+
+    <div class="panel" role="tabpanel" id="p-gst" aria-labelledby="t-gst" tabindex="0">
+      <div class="panel-copy">
+        <h3>The right GST on every bill, without looking it up.</h3>
+        <ul class="ticks-list">
+          <li><b>Every kind of bill.</b> Tax invoice, bill of supply, estimate, proforma, sale order, delivery challan, credit and debit notes.</li>
+          <li><b>CGST, SGST, IGST or UTGST</b> chosen from the two GSTINs, with HSN or SAC on every line.</li>
+          <li><b>E-invoice ready.</b> The official JSON for each bill, and the IRN, acknowledgement and QR printed once you have them.</li>
+          <li><b>E-way bill file</b> with transport details, ready to upload on the portal.</li>
+          <li><b>Exports.</b> Foreign currency, LUT or IGST paid, shipping bill number, date and port.</li>
+          <li><b>TDS and TCS</b> on bills and party payments, and credit notes that quote the original invoice.</li>
+        </ul>
+      </div>
+      <div class="fan">
+        <div class="phone"><div class="phone-screen"><img src="/img/s/gst.webp" width="390" height="844" alt="GST summary for November 2026: estimated GST to pay ₹1,667.20" loading="lazy"></div></div>
+        <div class="phone"><div class="phone-screen"><img src="/img/s/preview-irn.webp" width="390" height="844" alt="Tax invoice preview with IRN and e-invoice QR" loading="lazy"></div></div>
+        <div class="phone"><div class="phone-screen"><img src="/img/s/eway.webp" width="390" height="844" alt="E-way bill screen with transport details" loading="lazy"></div></div>
+      </div>
+    </div>
+
+    <div class="panel" role="tabpanel" id="p-khata" aria-labelledby="t-khata" tabindex="0" hidden>
+      <div class="panel-copy">
+        <h3>Know who owes you. Get it back sooner.</h3>
+        <ul class="ticks-list">
+          <li><b>A khata for every party</b> with a running balance, “you'll get” and “you'll give”, and how many days late.</li>
+          <li><b>Reminders on WhatsApp.</b> A daily list of who to remind, with a polite message and pay link ready.</li>
+          <li><b>Promises remembered.</b> Note when they say they'll pay; reminders wait till that day.</li>
+          <li><b>A statement link</b> your customer can open to see their own bills and balance. Switch it off any time.</li>
+          <li><b>UPI on every bill</b>, receipt and statement, with the amount filled in. Several UPI and bank accounts.</li>
+          <li><b>Special prices</b> for a customer, applied on their bills automatically.</li>
+        </ul>
+      </div>
+      <div class="fan">
+        <div class="phone"><div class="phone-screen"><img src="/img/s/reminders.webp" width="390" height="844" alt="Payment reminders: 4 customers owe ₹16,817" loading="lazy"></div></div>
+        <div class="phone"><div class="phone-screen"><img src="/img/s/ledger-dark.webp" width="390" height="844" alt="Khata for Anita General Store: you will get ₹3,980" loading="lazy"></div></div>
+        <div class="phone"><div class="phone-screen"><img src="/img/s/accounts.webp" width="390" height="844" alt="Payment details with UPI and bank accounts" loading="lazy"></div></div>
+      </div>
+    </div>
+
+    <div class="panel" role="tabpanel" id="p-stock" aria-labelledby="t-stock" tabindex="0" hidden>
+      <div class="panel-copy">
+        <h3>Stock that adds up, in every godown.</h3>
+        <ul class="ticks-list">
+          <li><b>Moves by itself</b> with every bill, purchase and return. Stock value always on screen.</li>
+          <li><b>Godowns and transfers.</b> Stock per shop or warehouse, with a numbered transfer when goods move.</li>
+          <li><b>Batches and expiry.</b> Sells the batch that expires first, never an expired one; lists what expires in 30, 60 or 90 days.</li>
+          <li><b>Serial and IMEI.</b> Scan in on purchase, out on sale, and look one up for warranty.</li>
+          <li><b>Purchase bills</b> with supplier GST, so input tax shows in your GST summary.</li>
+          <li><b>Low stock</b> on Home, and a reorder list you send to your supplier on WhatsApp.</li>
+        </ul>
+      </div>
+      <div class="fan">
+        <div class="phone"><div class="phone-screen"><img src="/img/s/items.webp" width="390" height="844" alt="Items: stock value ₹1,37,271, 2 items running out" loading="lazy"></div></div>
+        <div class="phone"><div class="phone-screen"><img src="/img/s/godowns.webp" width="390" height="844" alt="Godowns: Main, Jayanagar shop, Peenya warehouse" loading="lazy"></div></div>
+        <div class="phone"><div class="phone-screen"><img src="/img/s/expiring.webp" width="390" height="844" alt="Expiring batches: Paracetamol batch expires in 20 days" loading="lazy"></div></div>
+      </div>
+    </div>
+
+    <div class="panel" role="tabpanel" id="p-team" aria-labelledby="t-team" tabindex="0" hidden>
+      <div class="panel-copy">
+        <h3>One shop, many phones. Nothing lost.</h3>
+        <ul class="ticks-list">
+          <li><b>Staff on their own phones</b> with roles: manager, cashier, or read-only for your CA.</li>
+          <li><b>Your PIN for the big things</b>: large discounts, edits and deletes. Every action logged by name and time.</li>
+          <li><b>Attendance and salary.</b> Selfie check-in, monthly attendance and payslips.</li>
+          <li><b>Deleted by mistake?</b> Bills stay in the trash for 30 days with their payments and stock.</li>
+          <li><b>Several businesses</b> under one sign-in, each with its own GSTIN and books.</li>
+          <li><b>Windows app</b> for the counter, with keyboard shortcuts for a new bill and quick search.</li>
+        </ul>
+      </div>
+      <div class="fan">
+        <div class="phone"><div class="phone-screen"><img src="/img/s/signin.webp" width="390" height="844" alt="Sign in with WhatsApp: 6 months of Max free" loading="lazy"></div></div>
+        <div class="phone"><div class="phone-screen"><img src="/img/s/trash.webp" width="390" height="844" alt="Deleted bills kept for 30 days" loading="lazy"></div></div>
+        <div class="phone"><div class="phone-screen"><img src="/img/s/theme.webp" width="390" height="844" alt="Theme and look: Ink and Mint, Golden Rush, Frost Sapphire" loading="lazy"></div></div>
+      </div>
+    </div>
+
+    <div class="panel" role="tabpanel" id="p-rep" aria-labelledby="t-rep" tabindex="0" hidden>
+      <div class="panel-copy">
+        <h3>The numbers, the day you need them.</h3>
+        <ul class="ticks-list">
+          <li><b>What you kept</b> after every cost: sales, profit and expenses, by day, item or party.</li>
+          <li><b>Day book</b> of every bill and payment, as PDF or Excel.</li>
+          <li><b>For your CA</b>: GSTR-1 file, HSN summary, Tally export and an Excel of every bill.</li>
+          <li><b>Income tax estimate</b> for the year under the new regime, with TDS to claim.</li>
+          <li><b>Backup to your own Google Drive</b>, automatic every day. We can't see it.</li>
+          <li><b>GST calculator</b> built in, for quick sums at the counter.</li>
+        </ul>
+      </div>
+      <div class="fan">
+        <div class="phone"><div class="phone-screen"><img src="/img/s/reports.webp" width="390" height="844" alt="Reports: you kept ₹18,824 after every cost this week" loading="lazy"></div></div>
+        <div class="phone"><div class="phone-screen"><img src="/img/s/daybook.webp" width="390" height="844" alt="Day book with money in and out" loading="lazy"></div></div>
+        <div class="phone"><div class="phone-screen"><img src="/img/s/incometax.webp" width="390" height="844" alt="Income tax estimate for 2026-27" loading="lazy"></div></div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<section class="gallery" id="screens" aria-labelledby="gal-h">
+  <div class="wrap gal-head">
+    <h2 id="gal-h" class="h2 reveal">Real screens. <span class="soft">Nothing mocked up.</span></h2>
+    <p class="sub reveal">Every image here is the app itself.</p>
+  </div>
+  <div class="gal-wrap">
+    <div class="gal-track" tabindex="0" role="region" aria-label="OwnBill screens, scroll sideways">
+      <figure><div class="phone"><div class="phone-screen"><img src="/img/s/home-dark.webp" width="390" height="844" alt="Home screen in dark mode" loading="lazy"></div></div><figcaption>Home, dark</figcaption></figure>
+      <figure><div class="phone"><div class="phone-screen"><img src="/img/s/editor.webp" width="390" height="844" alt="New bill with favourite items" loading="lazy"></div></div><figcaption>New bill</figcaption></figure>
+      <figure><div class="phone"><div class="phone-screen"><img src="/img/s/preview.webp" width="390" height="844" alt="A4 tax invoice preview" loading="lazy"></div></div><figcaption>A4 tax invoice</figcaption></figure>
+      <figure><div class="phone"><div class="phone-screen"><img src="/img/s/bills.webp" width="390" height="844" alt="All bills with paid and unpaid filters" loading="lazy"></div></div><figcaption>All bills</figcaption></figure>
+      <figure><div class="phone"><div class="phone-screen"><img src="/img/s/purchase.webp" width="390" height="844" alt="Purchase bill with batches" loading="lazy"></div></div><figcaption>Purchase with batches</figcaption></figure>
+      <figure><div class="phone"><div class="phone-screen"><img src="/img/s/transfers.webp" width="390" height="844" alt="Stock transfers between godowns" loading="lazy"></div></div><figcaption>Stock transfers</figcaption></figure>
+      <figure><div class="phone"><div class="phone-screen"><img src="/img/s/serial.webp" width="390" height="844" alt="Serial number lookup" loading="lazy"></div></div><figcaption>Serial and IMEI lookup</figcaption></figure>
+      <figure><div class="phone"><div class="phone-screen"><img src="/img/s/stockhistory.webp" width="390" height="844" alt="Stock history of an item" loading="lazy"></div></div><figcaption>Stock history</figcaption></figure>
+      <figure><div class="phone"><div class="phone-screen"><img src="/img/s/irn.webp" width="390" height="844" alt="E-invoice IRN ready" loading="lazy"></div></div><figcaption>E-invoice IRN</figcaption></figure>
+      <figure><div class="phone"><div class="phone-screen"><img src="/img/s/export.webp" width="390" height="844" alt="Export invoice in foreign currency" loading="lazy"></div></div><figcaption>Export invoice</figcaption></figure>
+      <figure><div class="phone"><div class="phone-screen"><img src="/img/s/backup.webp" width="390" height="844" alt="Google Drive backup settings" loading="lazy"></div></div><figcaption>Drive backup</figcaption></figure>
+      <figure><div class="phone"><div class="phone-screen"><img src="/img/s/calculator.webp" width="390" height="844" alt="GST calculator" loading="lazy"></div></div><figcaption>GST calculator</figcaption></figure>
+      <figure><div class="phone"><div class="phone-screen"><img src="/img/s/home-gold.webp" width="390" height="844" alt="Home in the Golden Rush theme" loading="lazy"></div></div><figcaption>Golden Rush theme</figcaption></figure>
+      <figure><div class="phone"><div class="phone-screen"><img src="/img/s/plans.webp" width="390" height="844" alt="Choose your plan" loading="lazy"></div></div><figcaption>Plans</figcaption></figure>
+    </div>
+  </div>
+</section>
+
+<section class="sec trust" aria-labelledby="trust-h">
+  <div class="wrap">
+    <h2 id="trust-h" class="h2 reveal">Your books, guarded <span class="soft">like the cash in your drawer.</span></h2>
+    <div class="trust-grid">
+      <div class="t-card reveal"><svg class="ic"><use href="#i-pin"/></svg><h3>Servers in India</h3><p>Your cloud copy is kept in Mumbai, under Indian law.</p></div>
+      <div class="t-card reveal"><svg class="ic"><use href="#i-wifi-off"/></svg><h3>Offline first</h3><p>Everything is on the phone first. No network, no problem.</p></div>
+      <div class="t-card reveal"><svg class="ic"><use href="#i-shield"/></svg><h3>Every shop walled off</h3><p>Server rules keep each business's data apart. One shop can never read another's.</p></div>
+      <div class="t-card reveal"><svg class="ic"><use href="#i-lock"/></svg><h3>Encrypted</h3><p>In transit and at rest. E-invoice passwords sit in an encrypted vault.</p></div>
+      <div class="t-card reveal"><svg class="ic"><use href="#i-cloud"/></svg><h3>Your own backup</h3><p>Daily backup to your own Google Drive, on top of cloud sync.</p></div>
+      <div class="t-card reveal"><svg class="ic"><use href="#i-key"/></svg><h3>WhatsApp sign-in</h3><p>No password to forget. A one-time code on WhatsApp and you're in.</p></div>
+    </div>
+  </div>
+</section>
+
+<section class="sec compare" aria-labelledby="cmp-h">
+  <div class="wrap">
+    <h2 id="cmp-h" class="h2 reveal">More shop, <span class="soft">less paperwork.</span></h2>
+    <p class="swipe-hint">Swipe the table sideways</p>
+    <div class="cmp-scroll reveal" tabindex="0" role="region" aria-label="Comparison table, scroll sideways">
+      <table class="cmp">
+        <thead><tr><th scope="col"><span class="sr">Feature</span></th><th scope="col" class="us">OwnBill</th><th scope="col">Paper khata</th><th scope="col">Desktop billing software</th><th scope="col">Typical billing apps</th></tr></thead>
+        <tbody>
+          <tr><th scope="row">GST bill from your phone</th><td class="us"><i class="y">Yes</i></td><td><i class="n">No</i></td><td><i class="n">PC only</i></td><td><i class="y">Yes</i></td></tr>
+          <tr><th scope="row">Bills with no internet</th><td class="us"><i class="y">Yes</i></td><td><i class="y">Yes</i></td><td><i class="y">Yes</i></td><td><i class="p">Often not</i></td></tr>
+          <tr><th scope="row">All phones in sync</th><td class="us"><i class="y">Yes</i></td><td><i class="n">No</i></td><td><i class="p">Add-on</i></td><td><i class="p">Varies</i></td></tr>
+          <tr><th scope="row">WhatsApp bill with UPI link</th><td class="us"><i class="y">Yes</i></td><td><i class="n">No</i></td><td><i class="n">No</i></td><td><i class="p">Some</i></td></tr>
+          <tr><th scope="row">Daily reminder list</th><td class="us"><i class="y">Yes</i></td><td><i class="n">No</i></td><td><i class="n">No</i></td><td><i class="p">Some</i></td></tr>
+          <tr><th scope="row">Godowns, batches, serials</th><td class="us"><i class="y">Yes</i></td><td><i class="n">No</i></td><td><i class="y">Yes</i></td><td><i class="p">Paid extra</i></td></tr>
+          <tr><th scope="row">E-invoice and e-way bill files</th><td class="us"><i class="y">Yes</i></td><td><i class="n">No</i></td><td><i class="y">Yes</i></td><td><i class="p">Some</i></td></tr>
+          <tr><th scope="row">Staff logins and owner PIN</th><td class="us"><i class="y">Yes</i></td><td><i class="n">No</i></td><td><i class="p">Varies</i></td><td><i class="p">Varies</i></td></tr>
+          <tr><th scope="row">12 languages</th><td class="us"><i class="y">Yes</i></td><td><i class="y">Yours</i></td><td><i class="n">Mostly English</i></td><td><i class="p">A few</i></td></tr>
+          <tr><th scope="row">Cost a year</th><td class="us"><b>From ₹1,499</b></td><td>Notebooks</td><td>Licence and a PC</td><td>Varies</td></tr>
+        </tbody>
+      </table>
+    </div>
+    <p class="fine">Other columns describe typical tools, not any named product.</p>
+  </div>
+</section>
+
+<section class="sec pricing" id="pricing" aria-labelledby="price-h">
+  <div class="wrap">
+    <h2 id="price-h" class="h2 reveal center">Start with 6 months of Max. <span class="soft">Free, no card.</span></h2>
+    <p class="sub reveal center">After that, pick the plan that fits. Prices include GST.</p>
+    <div class="bill-toggle reveal" role="radiogroup" aria-label="Billing period">
+      <span class="knob" aria-hidden="true"></span>
+      <button type="button" role="radio" aria-checked="true" data-period="y">Yearly <span class="save">save up to 30%</span></button>
+      <button type="button" role="radio" aria-checked="false" data-period="m">Monthly</button>
+    </div>
+    <div class="plans">
+      <article class="plan reveal">
+        <h3>Starter</h3><p class="for">For one counter</p>
+        <p class="price"><span class="cur">₹</span><b data-y="1,499" data-m="179">1,499</b><span class="per" data-y="/ year" data-m="/ month">/ year</span></p>
+        <ul><li>2 phones · 1 business</li><li>GST bills, khata, stock, reports</li><li>Cloud backup and live sync</li><li>CA login, customer statement link</li><li>Repeat bills</li></ul>
+        <a class="btn btn-line" href="mailto:provantict@gmail.com?subject=OwnBill%20Starter">Choose Starter</a>
+      </article>
+      <article class="plan plan-mid reveal">
+        <p class="badge">Most shops</p>
+        <h3>Business</h3><p class="for">For a shop with staff</p>
+        <p class="price"><span class="cur">₹</span><b data-y="2,999" data-m="349">2,999</b><span class="per" data-y="/ year" data-m="/ month">/ year</span></p>
+        <ul><li>5 phones · 3 businesses</li><li>Everything in Starter</li><li>Staff logins, attendance and salary</li><li>Godowns, batches, expiry, serials</li><li>Tally export, GSTR-1 file</li><li>Daily reminder list, cash and bank book</li></ul>
+        <a class="btn btn-light" href="mailto:provantict@gmail.com?subject=OwnBill%20Business">Choose Business</a>
+      </article>
+      <article class="plan plan-max reveal">
+        <p class="badge mint">Free for 6 months</p>
+        <h3>Max</h3><p class="for">For a growing trader</p>
+        <p class="price"><span class="cur">₹</span><b data-y="4,999" data-m="549">4,999</b><span class="per" data-y="/ year" data-m="/ month">/ year</span></p>
+        <ul><li>15 phones · no business limit</li><li>Everything in Business</li><li>E-invoice and e-way bill in one tap <em>coming soon</em></li><li>First in line for MandiWay</li></ul>
+        <a class="btn btn-mint" href="mailto:provantict@gmail.com?subject=OwnBill%20Max%20trial">Start 6 months free</a>
+      </article>
+    </div>
+    <p class="fine center">Extra phone ₹299 a year · extra business ₹499 a year. Plans renew until you cancel. Your bills stay on your phone and can be exported even after a plan ends.</p>
+  </div>
+</section>
+
+<section class="mandiway" id="mandiway" aria-labelledby="mw-h">
+  <canvas class="mw-net" aria-hidden="true"></canvas>
+  <div class="wrap mw-in">
+    <div class="mw-copy">
+      <p class="pill pill-orange"><span class="dot"></span>Coming soon</p>
+      <h2 id="mw-h" class="h2"><img class="mw-logo" src="/img/mandiway.svg" width="72" height="72" alt="MandiWay logo">MandiWay. <span class="soft">Your shop, open to all of India.</span></h2>
+      <p class="sub">MandiWay is the B2B marketplace that plugs straight into OwnBill. Today a wholesaler sells to the buyers who walk in or call. With MandiWay, buyers across the country can find your shop, and every deal arrives with the bill already made.</p>
+      <ul class="mw-points">
+        <li><b>Your stock is your storefront.</b> Pick which OwnBill items buyers can see. Prices and stock stay live, with nothing to upload twice.</li>
+        <li><b>Enquiries land in OwnBill.</b> Quote from your own items in a tap. An accepted order becomes a GST bill on both sides.</li>
+        <li><b>No middlemen in your margin.</b> Buyers and sellers deal directly, with bills and khata already in place.</li>
+        <li><b>Trust you can see.</b> Real businesses with real GSTINs and real trading history, not anonymous listings.</li>
+      </ul>
+      <p class="mw-note">OwnBill Max users get in first. <a href="mailto:provantict@gmail.com?subject=MandiWay%20early%20access">Tell me when MandiWay opens</a></p>
+    </div>
+    <div class="mw-flow" aria-hidden="true">
+      <div class="mw-card"><small>Buyer in Hubballi</small><b>Needs 200 bags Sona Masoori</b></div>
+      <div class="mw-line"><span></span></div>
+      <div class="mw-card"><small>Your quote, from OwnBill</small><b>₹1,260 a bag · in stock</b></div>
+      <div class="mw-line"><span></span></div>
+      <div class="mw-card mw-done"><small>Order accepted</small><b>INV-0612 · ₹2,52,000</b><em>Bill made on both sides</em></div>
+    </div>
+  </div>
+</section>
+
+<section class="sec start" aria-labelledby="start-h">
+  <div class="wrap">
+    <h2 id="start-h" class="h2 reveal">From install to first bill <span class="soft">in about a minute.</span></h2>
+    <ol class="start-steps">
+      <li class="reveal"><span class="n">1</span><h3>Get the app</h3><p>Write to us for early access. The Google Play release is coming soon.</p></li>
+      <li class="reveal"><span class="n">2</span><h3>Sign in with WhatsApp</h3><p>Type your mobile number and the code we send on WhatsApp.</p></li>
+      <li class="reveal"><span class="n">3</span><h3>Add your GSTIN</h3><p>Your business name, state and address. Then a few items.</p></li>
+      <li class="reveal"><span class="n">4</span><h3>Make your first bill</h3><p>Tap items, send on WhatsApp, get paid. Max is free for 6 months.</p></li>
+    </ol>
+  </div>
+</section>
+
+<section class="sec faq" id="faq" aria-labelledby="faq-h">
+  <div class="wrap faq-in">
+    <h2 id="faq-h" class="h2 reveal">Questions shop owners ask.</h2>
+    <div class="faq-list">
+      <details class="reveal"><summary>Does OwnBill work without internet?</summary><p>Yes. Billing, khata and stock work fully offline on the phone. When the network is back, every phone in your shop syncs on its own.</p></details>
+      <details class="reveal"><summary>Is it GST compliant?</summary><p>OwnBill picks CGST and SGST, IGST or UTGST from the two GSTINs and prints what a tax invoice must carry, including HSN, place of supply, the reverse-charge line and the amount in words. It makes the GSTR-1 file, e-invoice JSON and e-way bill file. Rates and HSN codes are defaults you can change; check them with your CA.</p></details>
+      <details class="reveal"><summary>What happens after the 6 free months?</summary><p>You choose Starter, Business or Max. If you don't, the paid features stop, but your bills stay readable on your phone and can be exported.</p></details>
+      <details class="reveal"><summary>Can my staff use it on their own phones?</summary><p>Yes. Invite them by number and give each a role: manager, cashier or read-only for your CA. Big discounts and deletes need your PIN.</p></details>
+      <details class="reveal"><summary>How do my customers pay?</summary><p>With any UPI app. Every bill, receipt and statement carries a QR and a pay link with the amount filled in. The money goes straight to your own UPI or bank account; OwnBill never touches it.</p></details>
+      <details class="reveal"><summary>Is my data safe?</summary><p>A copy is kept on servers in Mumbai, encrypted, with rules that keep every shop's data apart. You can also back up daily to your own Google Drive. We never sell your data or read your bills.</p></details>
+      <details class="reveal"><summary>Which languages does it support?</summary><p>English, Hindi, Kannada, Tamil, Telugu, Malayalam, Marathi, Gujarati, Bengali, Spanish, Indonesian and Portuguese.</p></details>
+      <details class="reveal"><summary>Does it suit pharmacies, mobile shops and wholesalers?</summary><p>Yes. Batches and expiry for medicines, serial and IMEI numbers for electronics, and godowns, transfers and purchase bills for wholesale and distribution.</p></details>
+      <details class="reveal"><summary>Is there a computer version?</summary><p>Yes, a Windows app for the counter that stays in step with your phones.</p></details>
+      <details class="reveal"><summary>When is MandiWay coming?</summary><p>Soon. OwnBill Max users get access first. Write to us to hear the day it opens.</p></details>
+    </div>
+  </div>
+</section>
+
+<section class="close" aria-labelledby="close-h">
+  <div class="wrap close-in">
+    <h2 id="close-h" class="display small reveal">Today's bills could <span class="mint">collect themselves.</span></h2>
+    <div class="cta-row center reveal">
+      <a class="btn btn-mint" href="mailto:provantict@gmail.com?subject=OwnBill%20early%20access">Get your free 6 months<svg class="ic"><use href="#i-arrow"/></svg></a>
+      <a class="btn btn-ghost" href="#pricing">See plans</a>
+    </div>
+  </div>
+</section>
 </main>
 
-<footer>
-  <div class="wrap">
-    <span>OwnBill is made by Provantic Technologies Private Limited, Bengaluru.</span>
-    <nav aria-label="Legal">
-      <a href="/privacy/">Privacy</a>
-      <a href="/terms/">Terms</a>
-      <a href="/delete-account/">Delete account</a>
-      <a href="mailto:provantict@gmail.com">provantict@gmail.com</a>
-    </nav>
+<footer class="foot">
+  <div class="wrap foot-in">
+    <div class="foot-brand">
+      <a class="brand" href="/"><img src="/img/mark.svg" width="34" height="34" alt="">OwnBill</a>
+      <p>GST billing, khata and stock for Indian shops and traders. Made in Bengaluru by Provantic Technologies Private Limited.</p>
+    </div>
+    <nav aria-label="Product"><h3>Product</h3><a href="#story">How it works</a><a href="#features">Features</a><a href="#pricing">Pricing</a><a href="#mandiway">MandiWay</a></nav>
+    <nav aria-label="Legal"><h3>Legal</h3><a href="/privacy/">Privacy</a><a href="/terms/">Terms</a><a href="/delete-account/">Delete account</a></nav>
+    <nav aria-label="Contact"><h3>Contact</h3><a href="mailto:provantict@gmail.com">provantict@gmail.com</a></nav>
   </div>
+  <div class="foot-giant" aria-hidden="true">OwnBill</div>
 </footer>
 </body>
 </html>
