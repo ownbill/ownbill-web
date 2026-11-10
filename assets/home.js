@@ -196,17 +196,48 @@
     screens.forEach(function (s, j) { s.classList.toggle('is-on', j === i); });
     chips.forEach(function (s, j) { s.classList.toggle('is-on', j === i); });
   }
-  if ('IntersectionObserver' in window) {
-    var io = new IntersectionObserver(function (entries) {
+  var narrow = window.matchMedia('(max-width: 980px)');
+  var io = null;
+  function watchSteps() {
+    if (!('IntersectionObserver' in window)) return;
+    if (io) io.disconnect();
+    // on phones the phone sits on top, so the active band is low on the screen
+    io = new IntersectionObserver(function (entries) {
       entries.forEach(function (en) { if (en.isIntersecting) setStep(steps.indexOf(en.target)); });
-    }, { rootMargin: '-45% 0px -45% 0px' });
+    }, { rootMargin: narrow.matches ? '-74% 0px -20% 0px' : '-45% 0px -45% 0px' });
     steps.forEach(function (s) { io.observe(s); });
   }
+  watchSteps();
+  if (narrow.addEventListener) narrow.addEventListener('change', watchSteps);
+
+  /* ---------- hero stage fits any phone width ---------- */
+  var heroStage = $('.hero-stage');
+  function fitStage() {
+    if (!narrow.matches) { heroStage.style.removeProperty('--s'); return; }
+    // fit the width, and keep the whole bill scene inside the first screen
+    var w = heroStage.parentElement.clientWidth;
+    var top = heroStage.offsetTop;
+    var byH = (window.innerHeight - top - 10) / 470;
+    heroStage.style.setProperty('--s', Math.min(1.12, w / 360, Math.max(.8, byH)).toFixed(3));
+  }
+  fitStage();
+  var lastW = window.innerWidth;
+  window.addEventListener('resize', function () { if (window.innerWidth !== lastW) { lastW = window.innerWidth; fitStage(); } });
+
+  /* ---------- sticky call to action on phones ---------- */
+  var mcta = $('.m-cta');
+  function mctaState() {
+    var y = window.scrollY, hero = $('.hero').offsetHeight;
+    var end = $('.close').getBoundingClientRect().top < window.innerHeight;
+    mcta.classList.toggle('is-on', narrow.matches && y > hero * .8 && !end && !links.classList.contains('is-open'));
+  }
+  window.addEventListener('scroll', mctaState, { passive: true });
+  mctaState();
   var prog = $('.story-progress');
   function storyProgress() {
     var ol = $('.steps');
     var r = ol.getBoundingClientRect();
-    var p = Math.min(1, Math.max(0, (window.innerHeight * .5 - r.top) / r.height));
+    var p = Math.min(1, Math.max(0, (window.innerHeight * (narrow.matches ? .78 : .5) - r.top) / r.height));
     prog.style.setProperty('--p', (p * 100).toFixed(1) + '%');
   }
   window.addEventListener('scroll', storyProgress, { passive: true });
@@ -261,6 +292,7 @@
   /* ---------- motion (GSAP) ---------- */
   if (!hasGsap || reduce) return;
   gsap.registerPlugin(ScrollTrigger);
+  ScrollTrigger.config({ ignoreMobileResize: true });
 
   // smooth scroll on desktop pointers
   if (window.Lenis && window.matchMedia('(pointer:fine)').matches) {
@@ -353,7 +385,7 @@
 
   // gallery: horizontal travel on wide screens
   var mm = gsap.matchMedia();
-  mm.add('(min-width: 981px)', function () {
+  mm.add('all', function () {
     var gal = $('.gallery');
     var track = $('.gal-track');
     gal.classList.add('is-pinned');
@@ -370,6 +402,32 @@
 
   // MandiWay cards drop in sequence
   gsap.from('.mw-card', { opacity: 0, x: 40, duration: .9, stagger: .25, ease: 'expo.out', scrollTrigger: { trigger: '.mw-flow', start: 'top 80%', once: true } });
+
+  // feature phones fan out as they scroll in (touch screens have no hover)
+  $$('.fan').forEach(function (f) {
+    gsap.fromTo(f, { '--sp': 0 }, { '--sp': 1.15, ease: 'none', scrollTrigger: { trigger: f, start: 'top 95%', end: 'center 55%', scrub: .6 } });
+  });
+
+  mm.add('(max-width: 980px)', function () {
+    // hero depth while scrolling: phone drifts up, bill drifts down
+    gsap.to('.hero-phone', { yPercent: -14, ease: 'none', scrollTrigger: { trigger: '.hero-stage', start: 'top 40%', end: 'bottom top', scrub: true } });
+    gsap.to('.printer, .hero-receipt', { yPercent: 9, ease: 'none', scrollTrigger: { trigger: '.hero-stage', start: 'top 40%', end: 'bottom top', scrub: true } });
+    // story phone breathes as each step lands
+    gsap.fromTo('.story-phone', { scale: .9, rotate: -3 }, { scale: 1, rotate: 0, ease: 'none', scrollTrigger: { trigger: '.story', start: 'top 70%', end: 'top 10%', scrub: true } });
+    // pain cards slide in from alternate sides
+    $$('.pain-card').forEach(function (c, i) {
+      gsap.fromTo(c, { x: i % 2 ? 40 : -40, rotate: i % 2 ? 2 : -2 }, { x: 0, rotate: 0, ease: 'power2.out', scrollTrigger: { trigger: c, start: 'top 98%', end: 'top 60%', scrub: .5 } });
+    });
+    // plans rise in a stack
+    $$('.plan').forEach(function (c) {
+      gsap.fromTo(c, { scale: .9 }, { scale: 1, ease: 'none', scrollTrigger: { trigger: c, start: 'top 100%', end: 'top 65%', scrub: .5 } });
+    });
+    // language receipt swings in
+    gsap.fromTo('.lang-receipt', { rotate: -14, x: -60 }, { rotate: -3, x: 0, ease: 'none', scrollTrigger: { trigger: '.lang-stage', start: 'top 95%', end: 'top 45%', scrub: .6 } });
+    gsap.fromTo('.lang-phone', { rotate: 14, x: 60 }, { rotate: 5, x: 0, ease: 'none', scrollTrigger: { trigger: '.lang-stage', start: 'top 95%', end: 'top 45%', scrub: .6 } });
+    // calculator receipt tilts up into place
+    gsap.fromTo('.calc-receipt', { rotate: 6, y: 60, scale: .94 }, { rotate: -1.5, y: 0, scale: 1, ease: 'none', scrollTrigger: { trigger: '.calc-out', start: 'top 100%', end: 'top 55%', scrub: .6 } });
+  });
 
   // footer word rises
   gsap.fromTo('.foot-giant', { yPercent: 40 }, { yPercent: 12, ease: 'none', scrollTrigger: { trigger: '.foot', start: 'top bottom', end: 'bottom bottom', scrub: true } });
