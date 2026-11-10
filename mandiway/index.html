@@ -1,0 +1,415 @@
+<!doctype html>
+<html lang="en-IN">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover">
+<title>MandiWay: India's wholesale market in one app</title>
+<meta name="description" content="Buy and sell wholesale with verified sellers across India. Ask for a price and get up to 5 verified quotes, check who you are paying, see today's mandi rates, and close the deal with the GST bill already made. Coming soon on Android.">
+<meta name="theme-color" content="#040B22">
+<link rel="canonical" href="https://mandiway.ownbill.in/">
+<link rel="icon" href="/img/mandiway-icon.svg" type="image/svg+xml">
+<meta property="og:type" content="website">
+<meta property="og:site_name" content="MandiWay">
+<meta property="og:title" content="MandiWay: India's mandi, in your pocket">
+<meta property="og:description" content="Verified sellers. Fair leads. Today's rates. Deals that end in a proper bill. Coming soon.">
+<meta property="og:url" content="https://mandiway.ownbill.in/">
+<meta property="og:image" content="https://mandiway.ownbill.in/img/og.png">
+<meta name="twitter:card" content="summary_large_image">
+<link rel="preload" href="/assets/fonts/Bricolage-var.woff2" as="font" type="font/woff2" crossorigin>
+<link rel="stylesheet" href="/assets/mw.css?v=1">
+<script src="/assets/vendor/gsap.min.js" defer></script>
+<script src="/assets/vendor/ScrollTrigger.min.js" defer></script>
+<script src="/assets/vendor/lenis.min.js" defer></script>
+<script src="/assets/mw.js?v=1" defer></script>
+<script type="module" src="/assets/hero-globe.js?v=1"></script>
+<script type="application/ld+json">
+{"@context":"https://schema.org","@type":"Organization","name":"MandiWay","url":"https://mandiway.ownbill.in/","logo":"https://mandiway.ownbill.in/img/mandiway-icon.svg","parentOrganization":{"@type":"Organization","name":"Provantic Technologies Private Limited"}}
+</script>
+</head>
+<body>
+<svg class="sprite" aria-hidden="true" focusable="false">
+  <symbol id="i-check" viewBox="0 0 24 24"><path d="M5 12.5l4.5 4.5L19 7.5"/></symbol>
+  <symbol id="i-arrow" viewBox="0 0 24 24"><path d="M5 12h14M13 6l6 6-6 6"/></symbol>
+  <symbol id="i-menu" viewBox="0 0 24 24"><path d="M4 7h16M4 12h16M4 17h16"/></symbol>
+  <symbol id="i-shield" viewBox="0 0 24 24"><path d="M12 3l8 3v6c0 4.5-3.4 8.3-8 9-4.6-.7-8-4.5-8-9V6z"/><path d="M8.5 12l2.5 2.5 4.5-5"/></symbol>
+  <symbol id="i-users" viewBox="0 0 24 24"><circle cx="9" cy="8" r="3.5"/><path d="M2.5 20a6.5 6.5 0 0 1 13 0M16 4.6a3.5 3.5 0 0 1 0 6.8M18 14.3a6.5 6.5 0 0 1 3.5 5.7"/></symbol>
+  <symbol id="i-clock" viewBox="0 0 24 24"><circle cx="12" cy="12" r="9"/><path d="M12 7v5l3 2"/></symbol>
+  <symbol id="i-phone" viewBox="0 0 24 24"><path d="M5 4h4l2 5-2.5 1.5a11 11 0 0 0 5 5L15 13l5 2v4a2 2 0 0 1-2 2A16 16 0 0 1 3 6a2 2 0 0 1 2-2z"/></symbol>
+  <symbol id="i-chart" viewBox="0 0 24 24"><path d="M3 17l6-6 4 4 8-8M15 7h6v6"/></symbol>
+  <symbol id="i-bank" viewBox="0 0 24 24"><path d="M3 10l9-6 9 6M5 10v8M9.5 10v8M14.5 10v8M19 10v8M3 20h18"/></symbol>
+  <symbol id="i-gavel" viewBox="0 0 24 24"><path d="M14 4l6 6M11 7l6 6M9 9l6-6 6 6-6 6zM12 12l-8 8"/></symbol>
+  <symbol id="i-bill" viewBox="0 0 24 24"><path d="M6 3h12v18l-2-1.4-2 1.4-2-1.4-2 1.4-2-1.4L6 21z"/><path d="M9 8h6M9 12h6M9 16h3"/></symbol>
+  <symbol id="i-chat" viewBox="0 0 24 24"><path d="M4 5h16v11H9l-5 4z"/></symbol>
+  <symbol id="i-star" viewBox="0 0 24 24"><path d="M12 3l2.8 5.7 6.2.9-4.5 4.4 1 6.2L12 17.3 6.5 20.2l1-6.2L3 9.6l6.2-.9z"/></symbol>
+  <symbol id="i-store" viewBox="0 0 24 24"><path d="M4 9l1.5-5h13L20 9M4 9v11h16V9M4 9a2.7 2.7 0 0 0 5.3 0 2.7 2.7 0 0 0 5.4 0 2.7 2.7 0 0 0 5.3 0M10 20v-5h4v5"/></symbol>
+  <symbol id="i-globe" viewBox="0 0 24 24"><circle cx="12" cy="12" r="9"/><path d="M3 12h18M12 3a14 14 0 0 1 0 18M12 3a14 14 0 0 0 0 18"/></symbol>
+</svg>
+
+<a class="skip" href="#main">Skip to content</a>
+
+<div class="intro" aria-hidden="true">
+  <video class="intro-film" src="/img/intro.mp4" poster="/img/intro-poster.png" muted playsinline preload="auto"></video>
+  <button class="intro-skip" type="button" tabindex="-1">Skip</button>
+</div>
+
+<header class="nav">
+  <div class="nav-in">
+    <a class="brand" href="/" aria-label="MandiWay home"><img class="brand-full" src="/img/mandiway-logo-dark.svg" width="150" height="33" alt="MandiWay"></a>
+    <nav class="nav-links" id="navlinks" aria-label="Main">
+      <a href="#deal">How a deal works</a>
+      <a href="#trust">Trust</a>
+      <a href="#goods">Goods</a>
+      <a href="#rates">Rates</a>
+      <a href="#sellers">For sellers</a>
+      <a href="#faq">FAQ</a>
+      <a class="btn btn-orange btn-sm menu-cta" href="mailto:provantict@gmail.com?subject=MandiWay%20early%20list">Join the early list</a>
+    </nav>
+    <a class="btn btn-orange btn-sm nav-cta" href="mailto:provantict@gmail.com?subject=MandiWay%20early%20list">Join the early list</a>
+    <button class="nav-toggle" type="button" aria-expanded="false" aria-controls="navlinks" aria-label="Open menu"><svg class="ic"><use href="#i-menu"/></svg></button>
+  </div>
+</header>
+
+<main id="main">
+
+<section class="hero" aria-labelledby="hero-h">
+  <div class="hero-sky" aria-hidden="true"></div>
+  <div class="hero-globe" aria-hidden="true"><div class="globe-mount"></div></div>
+  <div class="hero-world" aria-hidden="true">
+    <p class="world-line"><svg class="ic"><use href="#i-globe"/></svg>Then, the world. <span>MandiWay Global brings verified overseas sellers for bulk imports, soon after launch.</span></p>
+  </div>
+  <div class="wrap hero-in">
+    <div class="hero-copy">
+      <p class="pill"><span class="dot"></span>Coming soon · Android</p>
+      <h1 id="hero-h" class="display">
+        <span class="line"><span>India's mandi.</span></span>
+        <span class="line"><span class="o">In your pocket.</span></span>
+      </h1>
+      <p class="lede">MandiWay connects shops, traders and factories with verified sellers across India. Ask for a price and get up to five quotes, check exactly who you're paying, and close the deal with the bill already made.</p>
+      <div class="cta-row">
+        <a class="btn btn-orange" href="mailto:provantict@gmail.com?subject=MandiWay%20early%20list">Join the early list<svg class="ic"><use href="#i-arrow"/></svg></a>
+        <a class="btn btn-ghost" href="#deal">See a deal happen</a>
+      </div>
+    </div>
+    <ul class="hero-deals" aria-label="Examples of deals on MandiWay">
+      <li class="deal-card"><img src="/img/cat/rice.webp" width="56" height="56" alt=""><span><b>200 bags Sona Masoori</b><small>Hubballi · 3 verified quotes in 14 min</small></span></li>
+      <li class="deal-card"><img src="/img/cat/tmt.webp" width="56" height="56" alt=""><span><b>12 tonnes TMT Fe 550D</b><small>Pune ← Raipur · order confirmed</small></span></li>
+      <li class="deal-card"><img src="/img/cat/cotton.webp" width="56" height="56" alt=""><span><b>40 candy cotton</b><small>Surat · bill made on both sides</small></span></li>
+    </ul>
+  </div>
+  <div class="hero-rail wrap" aria-label="MandiWay in numbers">
+    <div><b>5</b><span>verified sellers at most see your requirement</span></div>
+    <div><b>24 h</b><span>to reply, or the slot passes to the next seller</span></div>
+    <div><b>4</b><span>checks on every seller: GST, bank, owner, premises</span></div>
+    <div><b>₹0</b><span>to ask for a price</span></div>
+  </div>
+</section>
+
+<div class="rates-tape" aria-label="Today's mandi rates, sample">
+  <span class="tape-label">Sample rates</span>
+  <div class="tape-track" id="tape"></div>
+</div>
+
+<section class="sec why" aria-labelledby="why-h">
+  <div class="wrap">
+    <p class="kicker reveal">Why another marketplace?</p>
+    <h2 id="why-h" class="h2 reveal">Wholesale runs on calls, chits and trust. <span class="soft">MandiWay keeps all three honest.</span></h2>
+    <div class="why-grid">
+      <article class="why-card reveal"><p class="was">Your number goes to thirty sellers. Your phone never stops.</p><p class="now"><svg class="ic"><use href="#i-users"/></svg><span><b>Five sellers, at most.</b> Only verified sellers can see a requirement, and no more than five of them.</span></p></article>
+      <article class="why-card reveal"><p class="was">You pay for leads that nobody else answers either.</p><p class="now"><svg class="ic"><use href="#i-clock"/></svg><span><b>Reply in 24 hours,</b> or the slot passes to the next seller. Buyers always hear back.</span></p></article>
+      <article class="why-card reveal"><p class="was">Calls at midnight from people you never asked.</p><p class="now"><svg class="ic"><use href="#i-phone"/></svg><span><b>The buyer decides.</b> Chat only, or calls allowed. Block anyone in one tap.</span></p></article>
+      <article class="why-card reveal"><p class="was">Advance paid to a name on a visiting card.</p><p class="now"><svg class="ic"><use href="#i-shield"/></svg><span><b>Verify before you pay.</b> GSTIN, bank account, owner and premises, checked by MandiWay.</span></p></article>
+      <article class="why-card reveal"><p class="was">Is today's price fair? You call three people to guess.</p><p class="now"><svg class="ic"><use href="#i-chart"/></svg><span><b>Today's rates in the app,</b> for grains, metals, construction and more.</span></p></article>
+      <article class="why-card reveal"><p class="was">Deal done on WhatsApp. Bill made later, if at all.</p><p class="now"><svg class="ic"><use href="#i-bill"/></svg><span><b>Every order becomes a bill</b> in OwnBill on both sides, with GST in place.</span></p></article>
+    </div>
+  </div>
+</section>
+
+<section class="deal" id="deal" aria-labelledby="deal-h">
+  <div class="wrap deal-in">
+    <div class="deal-copy">
+      <p class="kicker">How a deal works</p>
+      <h2 id="deal-h" class="h2">One requirement. <span class="soft">Five verified quotes. One bill.</span></h2>
+      <ol class="steps">
+        <li class="step is-on">
+          <span class="step-n">01</span>
+          <h3>Ask for a price, like you'd ask a friend.</h3>
+          <p>MandiWay asks the right questions for the product: variety, pack, quantity, by when, your budget. Type or speak. Choose whether sellers may call you.</p>
+          <figure class="step-shot"><div class="phone"><div class="phone-screen"><img src="/img/s/b-ask.webp" width="585" height="1266" alt="Ask for a price: a chat asking how much Sona Masoori rice you need" loading="lazy"></div></div></figure>
+        </li>
+        <li class="step">
+          <span class="step-n">02</span>
+          <h3>Up to five verified sellers see it.</h3>
+          <p>Sellers who deal in it nearby get the requirement with your specs and budget. Each must reply within 24 hours or give the slot back.</p>
+          <figure class="step-shot"><div class="phone"><div class="phone-screen"><img src="/img/s/s-find.webp" width="585" height="1266" alt="Seller app: Find buyers, a Sona Masoori rice requirement for 200 bags from Hubballi" loading="lazy"></div></div></figure>
+        </li>
+        <li class="step">
+          <span class="step-n">03</span>
+          <h3>Check who you're paying.</h3>
+          <p>Every seller's trust card shows their checks, reply speed, ratings and delivered orders. Type any GSTIN or mobile number to verify before you pay.</p>
+          <figure class="step-shot"><div class="phone"><div class="phone-screen"><img src="/img/s/b-check.webp" width="585" height="1266" alt="Verify before you pay: GSTIN, bank account, owner and premises checks" loading="lazy"></div></div></figure>
+        </li>
+        <li class="step">
+          <span class="step-n">04</span>
+          <h3>Agree, order, and the bill makes itself.</h3>
+          <p>Accept a quote and it becomes an order. Sellers on OwnBill get a GST bill on both sides automatically, and their stock moves with it.</p>
+          <figure class="step-shot"><div class="phone"><div class="phone-screen"><img src="/img/s/s-today.webp" width="585" height="1266" alt="Seller app Today: enquiries this week, 7 buyers want what you sell, OwnBill linked" loading="lazy"></div></div></figure>
+        </li>
+      </ol>
+    </div>
+    <div class="deal-stage" aria-hidden="true">
+      <div class="deal-progress"><span></span></div>
+      <div class="phone deal-phone"><div class="phone-screen">
+        <img class="sc is-on" src="/img/s/b-ask.webp" width="585" height="1266" alt="">
+        <img class="sc" src="/img/s/s-find.webp" width="585" height="1266" alt="">
+        <img class="sc" src="/img/s/b-check.webp" width="585" height="1266" alt="">
+        <img class="sc" src="/img/s/s-today.webp" width="585" height="1266" alt="">
+      </div></div>
+      <div class="chip is-on"><img src="/img/cat/rice.webp" width="28" height="28" alt="">200 bags · by 14 Nov · ₹2.7 lakh</div>
+      <div class="chip"><span class="slots"><i></i><i></i><i class="off"></i><i class="off"></i><i class="off"></i></span>3 of 5 slots left</div>
+      <div class="chip"><svg class="ic"><use href="#i-shield"/></svg>GST · Bank · Owner · Premises</div>
+      <div class="chip"><svg class="ic"><use href="#i-bill"/></svg>INV-0612 made on both sides</div>
+    </div>
+  </div>
+</section>
+
+<section class="sec trust" id="trust" aria-labelledby="trust-h">
+  <div class="wrap trust-in">
+    <div class="trust-copy">
+      <p class="kicker reveal">Trust you can see</p>
+      <h2 id="trust-h" class="h2 reveal">Know a seller before <span class="soft">you know their voice.</span></h2>
+      <p class="sub reveal">Every seller on MandiWay carries a trust card built from what actually happened: checks MandiWay ran, how fast they reply, how buyers rated the goods and the delivery, and how many came back for more.</p>
+      <ul class="ticks reveal">
+        <li>Four checks: GSTIN active, bank account in the business's name, owner identity, premises seen on a live video call.</li>
+        <li>Reply rate and median reply time, from real enquiries.</li>
+        <li>Ratings split into response, quality and delivery.</li>
+        <li>Orders delivered and repeat buyers, never typed in by the seller.</li>
+      </ul>
+    </div>
+    <div class="trust-card reveal" aria-label="Example seller trust card">
+      <div class="tc-head">
+        <span class="tc-av">SL</span>
+        <span><b>Sri Lakshmi Traders</b><small>Wholesaler · Yeshwanthpur, Bengaluru · since 2009</small></span>
+        <span class="tc-badge"><svg class="ic"><use href="#i-shield"/></svg>Verified</span>
+      </div>
+      <div class="tc-checks"><span><svg class="ic"><use href="#i-check"/></svg>GST</span><span><svg class="ic"><use href="#i-check"/></svg>Bank</span><span><svg class="ic"><use href="#i-check"/></svg>Owner</span><span><svg class="ic"><use href="#i-check"/></svg>Premises</span></div>
+      <div class="tc-stats">
+        <div class="ring"><svg viewBox="0 0 120 120"><circle cx="60" cy="60" r="50" class="ring-bg"/><circle cx="60" cy="60" r="50" class="ring-fg" pathLength="100"/></svg><b data-to="94">94</b><small>% replied in 24 h</small></div>
+        <div class="tc-num"><b data-to="8">8</b><small>min median reply</small></div>
+        <div class="tc-num"><b data-to="312">312</b><small>orders delivered</small></div>
+        <div class="tc-num"><b data-to="41">41</b><small>repeat buyers</small></div>
+      </div>
+      <div class="tc-rate">
+        <div class="tc-stars"><b>4.7</b><span class="stars"><svg class="ic"><use href="#i-star"/></svg><svg class="ic"><use href="#i-star"/></svg><svg class="ic"><use href="#i-star"/></svg><svg class="ic"><use href="#i-star"/></svg><svg class="ic"><use href="#i-star"/></svg></span><small>38 reviews</small></div>
+        <ul class="tc-bars">
+          <li><span>Response</span><i data-w="96"></i><em>4.8</em></li>
+          <li><span>Quality</span><i data-w="92"></i><em>4.6</em></li>
+          <li><span>Delivery</span><i data-w="90"></i><em>4.5</em></li>
+        </ul>
+      </div>
+      <p class="tc-foot">MandiWay introduced you on 11 Nov 2026</p>
+    </div>
+  </div>
+  <p class="wrap fine">Example card. Numbers on real cards come from each seller's own history.</p>
+</section>
+
+<section class="goods" id="goods" aria-labelledby="goods-h">
+  <div class="wrap goods-head">
+    <p class="kicker reveal">The goods</p>
+    <h2 id="goods-h" class="h2 reveal">From rice to rebar. <span class="soft">Everything a business buys in bulk.</span></h2>
+    <ul class="cats reveal">
+      <li>Food grains, pulses and FMCG</li><li>Building and construction</li><li>Electrical</li><li>Packaging and paper</li><li>Industrial tools</li><li>Machinery</li>
+    </ul>
+  </div>
+  <div class="goods-rows" aria-hidden="true">
+    <div class="goods-row" data-dir="-1">
+      <figure><img src="/img/cat/rice.webp" width="256" height="256" alt="" loading="lazy"><figcaption>Rice</figcaption></figure>
+      <figure><img src="/img/cat/wheat.webp" width="256" height="256" alt="" loading="lazy"><figcaption>Wheat</figcaption></figure>
+      <figure><img src="/img/cat/dal.webp" width="256" height="256" alt="" loading="lazy"><figcaption>Dal</figcaption></figure>
+      <figure><img src="/img/cat/sugar.webp" width="256" height="256" alt="" loading="lazy"><figcaption>Sugar</figcaption></figure>
+      <figure><img src="/img/cat/oil.webp" width="256" height="256" alt="" loading="lazy"><figcaption>Edible oil</figcaption></figure>
+      <figure><img src="/img/cat/spices.webp" width="256" height="256" alt="" loading="lazy"><figcaption>Spices</figcaption></figure>
+      <figure><img src="/img/cat/chilli.webp" width="256" height="256" alt="" loading="lazy"><figcaption>Chilli</figcaption></figure>
+      <figure><img src="/img/cat/onion.webp" width="256" height="256" alt="" loading="lazy"><figcaption>Onion</figcaption></figure>
+      <figure><img src="/img/cat/potato.webp" width="256" height="256" alt="" loading="lazy"><figcaption>Potato</figcaption></figure>
+      <figure><img src="/img/cat/tomato.webp" width="256" height="256" alt="" loading="lazy"><figcaption>Tomato</figcaption></figure>
+      <figure><img src="/img/cat/coconut.webp" width="256" height="256" alt="" loading="lazy"><figcaption>Coconut</figcaption></figure>
+      <figure><img src="/img/cat/cotton.webp" width="256" height="256" alt="" loading="lazy"><figcaption>Cotton</figcaption></figure>
+      <figure><img src="/img/cat/vegetables.webp" width="256" height="256" alt="" loading="lazy"><figcaption>Vegetables</figcaption></figure>
+      <figure><img src="/img/cat/agri.webp" width="256" height="256" alt="" loading="lazy"><figcaption>Agri inputs</figcaption></figure>
+      <figure><img src="/img/cat/textiles.webp" width="256" height="256" alt="" loading="lazy"><figcaption>Textiles</figcaption></figure>
+    </div>
+    <div class="goods-row" data-dir="1">
+      <figure><img src="/img/cat/tmt.webp" width="256" height="256" alt="" loading="lazy"><figcaption>TMT bars</figcaption></figure>
+      <figure><img src="/img/cat/cement.webp" width="256" height="256" alt="" loading="lazy"><figcaption>Cement</figcaption></figure>
+      <figure><img src="/img/cat/sand.webp" width="256" height="256" alt="" loading="lazy"><figcaption>M-sand</figcaption></figure>
+      <figure><img src="/img/cat/bricks.webp" width="256" height="256" alt="" loading="lazy"><figcaption>Bricks</figcaption></figure>
+      <figure><img src="/img/cat/tiles.webp" width="256" height="256" alt="" loading="lazy"><figcaption>Tiles</figcaption></figure>
+      <figure><img src="/img/cat/plywood.webp" width="256" height="256" alt="" loading="lazy"><figcaption>Plywood</figcaption></figure>
+      <figure><img src="/img/cat/pipes.webp" width="256" height="256" alt="" loading="lazy"><figcaption>Pipes</figcaption></figure>
+      <figure><img src="/img/cat/paint.webp" width="256" height="256" alt="" loading="lazy"><figcaption>Paint</figcaption></figure>
+      <figure><img src="/img/cat/steel.webp" width="256" height="256" alt="" loading="lazy"><figcaption>Steel</figcaption></figure>
+      <figure><img src="/img/cat/aluminium.webp" width="256" height="256" alt="" loading="lazy"><figcaption>Aluminium</figcaption></figure>
+      <figure><img src="/img/cat/copper.webp" width="256" height="256" alt="" loading="lazy"><figcaption>Copper</figcaption></figure>
+      <figure><img src="/img/cat/gold.webp" width="256" height="256" alt="" loading="lazy"><figcaption>Gold</figcaption></figure>
+      <figure><img src="/img/cat/silver.webp" width="256" height="256" alt="" loading="lazy"><figcaption>Silver</figcaption></figure>
+      <figure><img src="/img/cat/excavator.webp" width="256" height="256" alt="" loading="lazy"><figcaption>Earthmovers</figcaption></figure>
+      <figure><img src="/img/cat/solar.webp" width="256" height="256" alt="" loading="lazy"><figcaption>Solar</figcaption></figure>
+    </div>
+    <div class="goods-row" data-dir="-1">
+      <figure><img src="/img/cat/wires.webp" width="256" height="256" alt="" loading="lazy"><figcaption>Wires</figcaption></figure>
+      <figure><img src="/img/cat/electronics.webp" width="256" height="256" alt="" loading="lazy"><figcaption>Electronics</figcaption></figure>
+      <figure><img src="/img/cat/appliances.webp" width="256" height="256" alt="" loading="lazy"><figcaption>Appliances</figcaption></figure>
+      <figure><img src="/img/cat/powertools.webp" width="256" height="256" alt="" loading="lazy"><figcaption>Power tools</figcaption></figure>
+      <figure><img src="/img/cat/cnc.webp" width="256" height="256" alt="" loading="lazy"><figcaption>CNC machines</figcaption></figure>
+      <figure><img src="/img/cat/safety.webp" width="256" height="256" alt="" loading="lazy"><figcaption>Safety gear</figcaption></figure>
+      <figure><img src="/img/cat/cartons.webp" width="256" height="256" alt="" loading="lazy"><figcaption>Cartons</figcaption></figure>
+      <figure><img src="/img/cat/printing.webp" width="256" height="256" alt="" loading="lazy"><figcaption>Printing</figcaption></figure>
+      <figure><img src="/img/cat/chemicals.webp" width="256" height="256" alt="" loading="lazy"><figcaption>Chemicals</figcaption></figure>
+      <figure><img src="/img/cat/lab.webp" width="256" height="256" alt="" loading="lazy"><figcaption>Lab supplies</figcaption></figure>
+      <figure><img src="/img/cat/medical.webp" width="256" height="256" alt="" loading="lazy"><figcaption>Medical</figcaption></figure>
+      <figure><img src="/img/cat/furniture.webp" width="256" height="256" alt="" loading="lazy"><figcaption>Furniture</figcaption></figure>
+      <figure><img src="/img/cat/auto.webp" width="256" height="256" alt="" loading="lazy"><figcaption>Auto parts</figcaption></figure>
+      <figure><img src="/img/cat/logistics.webp" width="256" height="256" alt="" loading="lazy"><figcaption>Logistics</figcaption></figure>
+      <figure><img src="/img/cat/services.webp" width="256" height="256" alt="" loading="lazy"><figcaption>Services</figcaption></figure>
+    </div>
+  </div>
+</section>
+
+<section class="sec rates" id="rates" aria-labelledby="rates-h">
+  <div class="wrap rates-in">
+    <div class="rates-copy">
+      <p class="kicker reveal">Today's rates</p>
+      <h2 id="rates-h" class="h2 reveal">Walk into every deal <span class="soft">knowing the price.</span></h2>
+      <p class="sub reveal">The rates board covers bullion, metals, construction, grains, vegetables and agri goods, with the change since yesterday and a 30-day trend. Set an alert and MandiWay tells you when a price crosses your number.</p>
+      <div class="rate-cards">
+        <div class="rate-card reveal"><img src="/img/cat/dal.webp" width="44" height="44" alt=""><span><b>Toor dal</b><small>1 quintal</small></span><svg class="spark" viewBox="0 0 100 32" preserveAspectRatio="none"><path d="M0 22 L10 18 L20 21 L30 14 L40 16 L50 10 L60 13 L70 8 L80 11 L90 6 L100 4"/></svg><span class="rv"><b>₹12,085</b><small class="up">▲ 1.73%</small></span></div>
+        <div class="rate-card reveal"><img src="/img/cat/tmt.webp" width="44" height="44" alt=""><span><b>TMT Fe 550D</b><small>1 tonne</small></span><svg class="spark" viewBox="0 0 100 32" preserveAspectRatio="none"><path d="M0 20 L10 16 L20 18 L30 22 L40 17 L50 19 L60 13 L70 15 L80 10 L90 12 L100 7"/></svg><span class="rv"><b>₹57,561</b><small class="up">▲ 1.24%</small></span></div>
+        <div class="rate-card reveal"><img src="/img/cat/tomato.webp" width="44" height="44" alt=""><span><b>Tomato</b><small>1 quintal</small></span><svg class="spark dn" viewBox="0 0 100 32" preserveAspectRatio="none"><path d="M0 8 L10 12 L20 9 L30 15 L40 11 L50 17 L60 14 L70 20 L80 18 L90 24 L100 27"/></svg><span class="rv"><b>₹2,022</b><small class="dn">▼ 10.58%</small></span></div>
+      </div>
+      <p class="fine reveal">Sample rates shown until MandiWay's rates desk starts publishing at launch.</p>
+    </div>
+    <div class="rates-phone reveal"><div class="phone"><div class="phone-screen"><img src="/img/s/b-rates.webp" width="585" height="1266" alt="MandiWay Today's rates screen: gold, silver, copper and aluminium with trends" loading="lazy"></div></div></div>
+  </div>
+</section>
+
+<section class="sec auction" aria-labelledby="auc-h">
+  <div class="wrap auc-in">
+    <div class="auc-card reveal" aria-label="Example auction lot">
+      <div class="auc-top"><img src="/img/cat/cotton.webp" width="72" height="72" alt=""><span><b>Shankar-6 cotton, 40 candy</b><small>Verified seller · Rajkot</small></span><span class="live"><i></i>Live</span></div>
+      <div class="auc-clock"><span><b class="cd" data-cd="h">00</b><small>h</small></span><span><b class="cd" data-cd="m">14</b><small>min</small></span><span><b class="cd" data-cd="s">32</b><small>sec</small></span></div>
+      <div class="auc-bid"><small>Top bid</small><b class="bid">₹22,40,000</b><span class="bid-n"><b>17</b> bids</span></div>
+      <ol class="auc-feed"><li>Buyer in Coimbatore bid ₹22,40,000</li><li>Buyer in Tiruppur bid ₹22,25,000</li><li>Buyer in Erode bid ₹22,10,000</li></ol>
+      <div class="auc-escrow"><svg class="ic"><use href="#i-bank"/></svg>Money held in escrow until you accept the goods</div>
+    </div>
+    <div class="auc-copy">
+      <p class="kicker reveal">Auctions</p>
+      <h2 id="auc-h" class="h2 reveal">Bid on verified lots. <span class="soft">Pay only for what arrives.</span></h2>
+      <p class="sub reveal">Verified sellers put up lots with a live countdown. Buyers place a refundable deposit to bid. The winner's money sits in escrow and reaches the seller only after the goods are accepted. Sellers pay a fee only if the lot sells.</p>
+    </div>
+  </div>
+  <p class="wrap fine">Example lot.</p>
+</section>
+
+<section class="sec ownbill" aria-labelledby="ob-h">
+  <div class="wrap ob-in">
+    <div class="ob-copy">
+      <p class="kicker reveal">Works with OwnBill</p>
+      <h2 id="ob-h" class="h2 reveal">Already on OwnBill? <span class="soft">Your shop is already stocked.</span></h2>
+      <p class="sub reveal">Link once with a code. Choose which OwnBill items buyers can see, with prices and stock that stay live. When a buyer orders, the GST bill appears in OwnBill on both sides and the stock moves by itself. Nothing to type twice.</p>
+      <a class="btn btn-line reveal" href="https://ownbill.in/">See OwnBill<svg class="ic"><use href="#i-arrow"/></svg></a>
+    </div>
+    <div class="ob-flow" aria-hidden="true">
+      <div class="ob-node ob-a"><img src="/img/ownbill-mark.svg" width="56" height="56" alt=""><b>OwnBill</b><small>Your items, prices, stock</small></div>
+      <div class="ob-pipe"><span class="pk p1">Sona Masoori · ₹1,420</span><span class="pk p2">Toor dal · in stock</span><span class="pk p3 back">INV-0612 · ₹2,52,000</span></div>
+      <div class="ob-node ob-b"><img src="/img/mandiway-icon.svg" width="56" height="56" alt=""><b>MandiWay</b><small>Your storefront to India</small></div>
+    </div>
+  </div>
+</section>
+
+<section class="sec apps" id="sellers" aria-labelledby="apps-h">
+  <div class="wrap">
+    <p class="kicker reveal">Two apps, one market</p>
+    <h2 id="apps-h" class="h2 reveal">For the buyer and the seller. <span class="soft">Each gets its own app.</span></h2>
+    <div class="apps-grid">
+      <article class="app-card reveal">
+        <div class="app-top"><img src="/img/mandiway-icon.svg" width="52" height="52" alt=""><span><b>MandiWay</b><small>For buyers</small></span></div>
+        <ul class="ticks">
+          <li>Search verified sellers near you or across India.</li>
+          <li>Ask for a price in a guided chat, by typing or speaking.</li>
+          <li>Today's rates and price alerts.</li>
+          <li>Live auctions with refundable deposits and escrow.</li>
+          <li>Orders, chats and saved sellers in one place.</li>
+        </ul>
+        <div class="phone app-phone"><div class="phone-screen"><img src="/img/s/b-home.webp" width="585" height="1266" alt="MandiWay buyer home: search, today's rates, categories, live auctions" loading="lazy"></div></div>
+      </article>
+      <article class="app-card seller reveal">
+        <div class="app-top"><img src="/img/mandiway-elephant-white.svg" width="52" height="52" alt=""><span><b>MandiWay Seller</b><small>For sellers</small></span></div>
+        <ul class="ticks">
+          <li>Find buyers: requirements that match what you sell.</li>
+          <li>A trust card that grows with every delivered order.</li>
+          <li>Chats with favourites, archive and block.</li>
+          <li>List products yourself, or bring them from OwnBill.</li>
+          <li>Run auctions; pay a fee only if the lot sells.</li>
+        </ul>
+        <div class="phone app-phone"><div class="phone-screen"><img src="/img/s/s-find.webp" width="585" height="1266" alt="MandiWay Seller: Find buyers with lead quota" loading="lazy"></div></div>
+      </article>
+    </div>
+  </div>
+</section>
+
+<section class="sec plans" aria-labelledby="plans-h">
+  <div class="wrap">
+    <p class="kicker reveal center">Seller plans</p>
+    <h2 id="plans-h" class="h2 reveal center">Buyers ask for free. <span class="soft">Sellers pick a plan.</span></h2>
+    <div class="plan-grid">
+      <article class="plan reveal"><h3>Free listing</h3><p class="price"><b>₹0</b></p><ul><li>10 products, 1 category</li><li>Buyers within 10 km</li><li>5 buyer leads a month</li><li>1 login</li></ul></article>
+      <article class="plan reveal"><h3>Starter</h3><p class="price"><b>₹2,999</b><small>/ year</small></p><ul><li>100 products, 1 category</li><li>Buyers within 50 km</li><li>80 buyer leads a month</li><li>Matched leads</li></ul></article>
+      <article class="plan plan-hi reveal"><p class="badge">For growing sellers</p><h3>Growth</h3><p class="price"><b>₹4,999</b><small>/ year</small></p><ul><li>Unlimited products, 5 categories</li><li>Buyers across India</li><li>160 buyer leads a month</li><li>3 logins</li></ul></article>
+    </div>
+    <p class="fine center">Prices at launch may change. GST as applicable.</p>
+  </div>
+</section>
+
+<section class="sec faq" id="faq" aria-labelledby="faq-h">
+  <div class="wrap faq-in">
+    <h2 id="faq-h" class="h2 reveal">Questions traders ask.</h2>
+    <div class="faq-list">
+      <details class="reveal"><summary>When does MandiWay launch?</summary><p>Soon, on Android first, as two apps: MandiWay for buyers and MandiWay Seller. Join the early list and we'll tell you the day it opens.</p></details>
+      <details class="reveal"><summary>How is this different from the lead directories?</summary><p>A requirement goes to five verified sellers at most, and each must reply within 24 hours or give the slot to the next seller. Buyers choose chat or calls. Every seller carries a trust card built from real checks and real orders, not from what they paid.</p></details>
+      <details class="reveal"><summary>What does "verified" mean?</summary><p>MandiWay checks four things: the GSTIN is active, the bank account is in the business's name, the owner's identity, and the premises on a live video call. You can see which checks a seller has passed.</p></details>
+      <details class="reveal"><summary>Is it free for buyers?</summary><p>Yes. Searching, asking for prices, chatting and verifying a seller are free for buyers.</p></details>
+      <details class="reveal"><summary>How do auctions and escrow work?</summary><p>Buyers place a refundable deposit to bid. The winner's payment is held in escrow and released to the seller only after the goods are accepted.</p></details>
+      <details class="reveal"><summary>Do I need OwnBill to sell on MandiWay?</summary><p>No. You can list products in MandiWay Seller directly. If you use OwnBill, linking brings your items, prices and stock across, and orders become bills in OwnBill automatically.</p></details>
+      <details class="reveal"><summary>Where are the rates from?</summary><p>MandiWay's rates desk publishes daily rates at launch. Until then, the app shows sample rates and says so.</p></details>
+      <details class="reveal"><summary>What is MandiWay Global?</summary><p>An import desk for bulk buyers, starting soon after launch: verified overseas suppliers, inspection-backed quotes, and payment straight from your bank to the supplier.</p></details>
+    </div>
+  </div>
+</section>
+
+<section class="close" aria-labelledby="close-h">
+  <div class="wrap close-in">
+    <img class="close-logo reveal" src="/img/mandiway-logo-dark.svg" width="360" height="78" alt="">
+    <h2 id="close-h" class="display small reveal">The whole mandi is <span class="o">about to open.</span></h2>
+    <div class="cta-row center reveal">
+      <a class="btn btn-orange" href="mailto:provantict@gmail.com?subject=MandiWay%20early%20list">Join the early list<svg class="ic"><use href="#i-arrow"/></svg></a>
+      <a class="btn btn-ghost" href="mailto:provantict@gmail.com?subject=Selling%20on%20MandiWay">I want to sell</a>
+    </div>
+  </div>
+</section>
+</main>
+
+<div class="m-cta" aria-label="Join MandiWay">
+  <a class="btn btn-orange" href="mailto:provantict@gmail.com?subject=MandiWay%20early%20list">Join the early list</a>
+</div>
+
+<footer class="foot">
+  <div class="wrap foot-in">
+    <div class="foot-brand"><img src="/img/mandiway-logo-dark.svg" width="170" height="37" alt="MandiWay"><p>India's wholesale market in one app. Made in Bengaluru by Provantic Technologies Private Limited.</p></div>
+    <nav aria-label="Explore"><h3>Explore</h3><a href="#deal">How a deal works</a><a href="#trust">Trust</a><a href="#rates">Rates</a><a href="#sellers">For sellers</a></nav>
+    <nav aria-label="Family"><h3>Family</h3><a href="https://ownbill.in/">OwnBill</a></nav>
+    <nav aria-label="Contact"><h3>Contact</h3><a href="mailto:provantict@gmail.com">provantict@gmail.com</a></nav>
+  </div>
+  <div class="foot-giant" aria-hidden="true">MandiWay</div>
+</footer>
+</body>
+</html>
