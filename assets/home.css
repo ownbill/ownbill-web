@@ -475,3 +475,6 @@ button{font:inherit;color:inherit}
   .tabs button:active,.lang-pick button:active,.seg span:active{transform:scale(.96)}
 }
 @media (prefers-reduced-motion:reduce){.m-cta{transition:none}}
+
+/* sign-up dialog colours (assets/signup.css) */
+.su{--su-bg:#12161C;--su-side:linear-gradient(165deg,#0F2E22 0%,#0E1318 70%);--su-glow:rgba(61,220,151,.2);--su-line:var(--line);--su-line2:var(--line2);--su-text:var(--ink);--su-muted:var(--muted);--su-faint:var(--faint);--su-accent:var(--mint);--su-accent-soft:rgba(61,220,151,.14);--su-on-accent:var(--mint-ink);--su-field:rgba(255,255,255,.035);--su-field-hi:rgba(255,255,255,.06);--su-bad:#FF8A7A;--su-display:Geist,system-ui,sans-serif}

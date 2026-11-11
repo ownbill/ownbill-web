@@ -426,3 +426,7 @@ button{font:inherit;color:inherit}
   .pk{opacity:1;animation:none;position:static;display:inline-block;margin:6px}
   .ob-pipe{height:auto;padding:8px;display:flex;flex-wrap:wrap;justify-content:center}
 }
+
+/* sign-up dialog colours (assets/signup.css) */
+.su{--su-bg:#0A1739;--su-side:linear-gradient(165deg,#0D2F78 0%,#071436 75%);--su-glow:rgba(255,104,0,.22);--su-line:var(--line);--su-line2:var(--line2);--su-text:var(--text);--su-muted:var(--muted);--su-faint:var(--faint);--su-accent:var(--orange);--su-accent-soft:rgba(255,104,0,.16);--su-on-accent:#fff;--su-field:rgba(160,190,255,.05);--su-field-hi:rgba(160,190,255,.08);--su-bad:#FF8A7A;--su-display:var(--display)}
+.su-title,.su-done h2{font-stretch:92%}
