@@ -153,39 +153,6 @@
     });
   });
 
-  /* ---------- pricing toggle ---------- */
-  var pbtns = $$('.bill-toggle button');
-  var knob = $('.knob');
-  function placeKnob() {
-    var on = pbtns.filter(function (b) { return b.getAttribute('aria-checked') === 'true'; })[0];
-    knob.style.setProperty('--kw', on.offsetWidth + 'px');
-    knob.style.setProperty('--kx', (on.offsetLeft - 5) + 'px');
-  }
-  function setPeriod(btn, focus) {
-    pbtns.forEach(function (b) { b.setAttribute('aria-checked', String(b === btn)); b.tabIndex = b === btn ? 0 : -1; });
-    if (focus) btn.focus();
-    placeKnob();
-    var p = btn.dataset.period;
-    $$('.price').forEach(function (pr) {
-      var b = pr.querySelector('b'), per = pr.querySelector('.per');
-      var target = parseInt(b.dataset[p].replace(/,/g, ''), 10);
-      per.textContent = per.dataset[p];
-      if (hasGsap && !reduce) {
-        var o = { v: parseInt(b.textContent.replace(/,/g, ''), 10) || 0 };
-        gsap.to(o, { v: target, duration: .6, ease: 'power3.out', onUpdate: function () { b.textContent = Math.round(o.v).toLocaleString('en-IN'); } });
-      } else b.textContent = b.dataset[p];
-    });
-  }
-  pbtns.forEach(function (b, i) {
-    b.tabIndex = i === 0 ? 0 : -1;
-    b.addEventListener('click', function () { setPeriod(b); });
-    b.addEventListener('keydown', function (e) {
-      if (/Arrow(Left|Right|Up|Down)/.test(e.key)) { e.preventDefault(); setPeriod(pbtns[1 - i], true); }
-    });
-  });
-  placeKnob();
-  window.addEventListener('resize', placeKnob);
-  if (document.fonts && document.fonts.ready) document.fonts.ready.then(placeKnob);
 
   /* ---------- story (sticky phone, active step) ---------- */
   var steps = $$('.step');

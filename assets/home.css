@@ -478,3 +478,18 @@ button{font:inherit;color:inherit}
 
 /* sign-up dialog colours (assets/signup.css) */
 .su{--su-bg:#12161C;--su-side:linear-gradient(165deg,#0F2E22 0%,#0E1318 70%);--su-glow:rgba(61,220,151,.2);--su-line:var(--line);--su-line2:var(--line2);--su-text:var(--ink);--su-muted:var(--muted);--su-faint:var(--faint);--su-accent:var(--mint);--su-accent-soft:rgba(61,220,151,.14);--su-on-accent:var(--mint-ink);--su-field:rgba(255,255,255,.035);--su-field-hi:rgba(255,255,255,.06);--su-bad:#FF8A7A;--su-display:Geist,system-ui,sans-serif}
+
+/* two-plan pricing (Nov 2026) */
+.plans.two{grid-template-columns:repeat(2,1fr);max-width:860px;margin-left:auto;margin-right:auto}
+.price .per{white-space:nowrap}
+.lims{display:flex;flex-wrap:wrap;gap:8px;margin:-8px 0 22px}
+.lims span{padding:8px 12px;border-radius:12px;border:1px solid var(--line);background:rgba(255,255,255,.03);font-size:14px;color:var(--muted)}
+.lims b{color:var(--ink);font-size:16px;margin-right:2px}
+.plan-max .lims span{border-color:rgba(61,220,151,.3)}
+.all{max-width:860px;margin:20px auto 0;padding:28px 28px 30px;border:1px solid var(--line);border-radius:26px;background:var(--card)}
+.all h3{font-size:18px;margin:0 0 18px}
+.all ul{list-style:none;margin:0;padding:0;display:grid;grid-template-columns:repeat(2,minmax(0,1fr));gap:12px 28px;font-size:15px;color:var(--muted)}
+.all li{position:relative;padding-left:26px}
+.all li::before{content:"";position:absolute;left:0;top:5px;width:14px;height:14px;background:url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 24 24' fill='none' stroke='%233DDC97' stroke-width='3' stroke-linecap='round' stroke-linejoin='round'%3E%3Cpath d='M5 12.5l4.5 4.5L19 7.5'/%3E%3C/svg%3E") center/contain no-repeat}
+@media (max-width:900px){.plans.two{grid-template-columns:1fr;max-width:480px}.all{max-width:480px}}
+@media (max-width:560px){.all ul{grid-template-columns:1fr}.all{padding:24px 20px}}
